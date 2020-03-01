@@ -1,10 +1,21 @@
 'use strict'
 const path = require('path');
 const express = require('express');
+var cors = require('cors');
 const API_PORT = process.env.PORT || 3001;
 const router = express.Router();
 const app = express();
+
+const validation = require("./router/validation");
+let bodyParser=require('body-parser');
+
+app.use(cors());
+app.set('trust proxy', true);
+
+app.use(bodyParser.json())
 app.use('/api', router);
+app.use("/api/validation", validation);
+
 
 
 router.get('/',(req,res)=>{
