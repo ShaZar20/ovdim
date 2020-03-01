@@ -1,17 +1,18 @@
 .box {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 1rem;
     margin: auto;
-    max-width: 25rem;
-    form{
-        border: solid black 1px;
-        padding: 1.3rem 12rem;
-        border-radius: 3px;
+    width: 80%;
+    input{
+        padding: 0 .5rem ;
+        width:50%;
     }
     p{
         padding: 1rem;
         margin: 0;
+        font-size: medium;
+        color: #4F4F4F
     }
 }
 

@@ -35,32 +35,34 @@ export default class PersonalInfo extends React.Component {
     render() {
         return (
             <div className="container">
-                <h2>הפרטים האישיים שלי</h2>
-                <p>שם מלא *</p>
-                <input 
-                    type="text"
-                    value={this.state.name}
-                    onChange={this.onNameChange}
-                />
-                <p>הנהגה *</p>
-                <input 
-                    type="text"
-                    value={this.state.hanaga}
-                    onChange={this.onHanagaChange}
-                />
-                <p>שבט *</p>
-                <input 
-                    type="text"
-                    value={this.state.shevet}
-                    onChange={this.onShevetChange}
-                />
-                <p>תפקיד *</p>
-                <input 
-                    type="text"
-                    value={this.state.job}
-                    onChange={this.onJobChange}
-                />
-                <button className="login-button">אישור</button>
+                <div className="sub-container">
+                    <h2>הפרטים האישיים שלי</h2>
+                    <p>שם מלא *</p>
+                    <input 
+                        type="text"
+                        value={this.state.name}
+                        onChange={this.onNameChange}
+                    />
+                    <p>הנהגה *</p>
+                    <input 
+                        type="text"
+                        value={this.state.hanaga}
+                        onChange={this.onHanagaChange}
+                    />
+                    <p>שבט *</p>
+                    <input 
+                        type="text"
+                        value={this.state.shevet}
+                        onChange={this.onShevetChange}
+                    />
+                    <p>תפקיד *</p>
+                    <input 
+                        type="text"
+                        value={this.state.job}
+                        onChange={this.onJobChange}
+                    />
+                    <button className="login-button">אישור</button>
+                </div>
             </div>
         )
     }
