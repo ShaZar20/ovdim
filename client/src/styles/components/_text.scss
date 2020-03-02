@@ -2,3 +2,10 @@
     margin-top: 1rem;
     font-size: x-small;
 }
+
+@media (max-width:480px) {
+    .text{
+        margin-top: 2rem; 
+        font-size: small;
+    }
+}

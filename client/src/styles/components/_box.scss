@@ -18,11 +18,19 @@
 
 .boxTwo {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    font-size: x-small;
+    padding: 1rem 0;
+    P{
+        font-size: medium;
+    }
 }
 
-.input-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+@media (max-width:480px) {
+    .box {
+        width: 100%;
+    }
 }

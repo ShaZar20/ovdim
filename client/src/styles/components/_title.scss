@@ -1,10 +1,21 @@
 .title {
+    align-self: flex-start;
     color: #4F4F4F;
     font-size: x-large;
     font-weight: bold;
 }
 
 .sub-title {
+    align-self: flex-start;
     color: #4F4F4F;
     font-size: medium;
 }
+
+// @media (max-width:480px) {
+//     .title{
+//         font-size: large;
+//     }
+//     .sub-title {
+//         font-size: small;
+//     }
+// }

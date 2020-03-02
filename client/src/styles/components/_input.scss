@@ -73,3 +73,22 @@ input:disabled{
         padding-right: 1rem;
     }
 }
+
+@media (max-width:480px) {
+    .selected-input {
+        padding: .6rem;
+        background: #2F80ED;
+        color: white;
+        font-size: medium;
+        width: fit-content;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 10px;
+        margin: 1rem 0 .3rem 1rem ;
+    
+        svg{
+            padding-right: 1.2rem;
+        }
+    }
+}

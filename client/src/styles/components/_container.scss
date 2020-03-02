@@ -11,8 +11,10 @@
     flex-direction: column;
     margin: auto;
     margin-top: 2rem;
-
-
+    align-items: center;
+    .title{
+        align-self: center;
+    }
     p{
         color: #4F4F4F;
         font-size: 12px;
@@ -20,7 +22,6 @@
     }
     h2{
         color: #4F4F4F;
-        text-align: center;
     }
     
 }
@@ -41,6 +42,11 @@
     li {
         list-style: none; 
         padding: 5px;
+    }
+    button{
+        align-self: flex-end;
+        width: -webkit-fill-available;
+        width: -moz-available;
     }
 }
 
@@ -73,3 +79,102 @@
     
 }
 
+.buttonToLeft-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    button{
+        width: -webkit-fill-available;
+        width: -moz-available;
+
+    }
+}
+ // cheack buttons style for Form2 in Evaluation
+ // do not change
+
+.inputChB-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 80%;
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+}
+
+.checkmark {
+    margin: .5rem;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: #4F4F4F 1px solid;
+  }
+.checkmark:after {
+    content: "";
+    margin: auto;
+  }
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .5rem;
+}
+.input-box:hover input ~ .checkmark {
+    cursor: pointer;
+}
+
+.input-box input:checked ~ .checkmark{
+    background-color: #2F80ED;
+    border: #2F80ED 1px solid;
+
+}
+
+.input-box input:checked ~ .checkmark:after {
+    display: block;
+}
+
+@media (max-width:480px) {
+    .container{
+        width: 90%;
+        .title{
+            text-align: center;
+        }
+        h2{
+            text-align: center;
+            color: #4F4F4F;
+            font-size: x-large;
+            font-weight: bold;
+        }
+    }
+    .sub-container{
+        width: 100%;
+        input{
+            font-size: small;
+        }
+        p{
+            font-size: medium;
+        }
+        li{
+            font-size: small;
+        }
+    }
+    .evaluation-container{
+        margin-top: 1rem; 
+        width: 90%;
+    }
+    .enterPage-container {
+        margin-top: 2rem;
+        width: 90%;
+        button{
+            width: 60%;
+        }
+        p{
+            font-size: medium;
+        }
+    }
+}
