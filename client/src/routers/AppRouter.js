@@ -20,11 +20,11 @@ import test from '../components/CoWorkers/Type1';
         <div  className="main_container">
             <Header />
             <Switch>
-                <Route path="/" component={EnterPage} exact={true} />
+                <Route path="/" component={LoginViaSmsPage} exact={true} />
                 <Route path="/01" component={PersonalInfo} />
                 <Route path="/02" component={LoadingPage}  />
                 <Route path="/03" component={CoWorkers}  />
-                <Route path="/04" component={LoginViaSmsPage}  />
+                <Route path="/04" component={EnterPage}  />
                 <Route path="/05" component={Evaluation1}  />
                 <Route path="/06" component={Evaluation2}  />
                 <Route path="/07" component={Evaluation3}  />
