@@ -35,7 +35,7 @@ export default class Evaluation2 extends React.Component {
                     <Form2  name="שי עזר" onChange={this.onChange} index={1} />
                     <Form2  name="מוחמד" onChange={this.onChange} index={2} />
                     <div className="buttonToLeft-container">
-                        <button className="login-button"  disabled={this.isDisable} >לשאלה הבאה</button>
+                        <button className="login-button" type="submit" disabled={this.isDisable}>לשאלה הבאה</button>
                     </div>
                 </form>
             </div>

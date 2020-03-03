@@ -36,7 +36,7 @@ export default class PersonalInfo extends React.Component {
         return (
             <div className="container">
                 <div className="sub-container">
-                    <h2>הפרטים האישיים שלי</h2>
+                    <h2 className="title-center">הפרטים האישיים שלי</h2>
                     <p>שם מלא *</p>
                     <input 
                         type="text"

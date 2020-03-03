@@ -18,7 +18,7 @@ const LoginViaSmsPage = () => {
     else{
         return(
             <div className="container">
-                <h2 className="title">התחברות לאזור אישי באמצעות סמס</h2>
+                <h2 className="title-center">התחברות לאזור אישי באמצעות סמס</h2>
                 <div className="sub-container">
                     <p>תעודת זהות *</p>
                     <input value={id} onChange={(e)=>setId(e.target.value)}/>
