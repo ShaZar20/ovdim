@@ -24,7 +24,7 @@ import test from '../components/CoWorkers/Type1';
                 <Route path="/01" component={PersonalInfo} />
                 <Route path="/02" component={LoadingPage}  />
                 <Route path="/03" component={CoWorkers}  />
-                <Route path="/04" component={EnterPage}  />
+                <Route path="/home" component={EnterPage}  />
                 <Route path="/05" component={Evaluation1}  />
                 <Route path="/06" component={Evaluation2}  />
                 <Route path="/07" component={Evaluation3}  />

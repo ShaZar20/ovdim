@@ -7,9 +7,9 @@ const Users = require('../models/Users');
 
 mongoose.set('useFindAndModify', false);
 const nexmo = new Nexmo({
-    apiKey: '8691da7f',
-    apiSecret: 'FBT1qvCHYI7vqcuP',
-  });
+  apiKey: '8691da7f',
+  apiSecret: 'FBT1qvCHYI7vqcuP',
+});
 
 router.post('/',(req,res)=>{
     console.log(req.body)
@@ -17,19 +17,25 @@ router.post('/',(req,res)=>{
     
     // send message
     // return the nexmo request id
-    nexmo.verify.request({
-        number: req.body.number,
-        brand: 'Nexmo',
-        code_length: '6'
-      }, (err, result) => {
-        if(err ){
-          console.log(err)
-        }
-        else{
-          console.log(err)
-          res.send(result)
-        }
-      });
+    const from = 'Zofim Ovdim';
+    const to = req.body.number;
+    const text = 'Your code: ' + req.body.pincode;
+    
+    nexmo.message.sendSms(from, to, text);   
+    res.send({status:0}) 
+    // nexmo.verify.request({
+    //     number: req.body.number,
+    //     brand: 'Nexmo',
+    //     code_length: '6'
+    //   }, (err, result) => {
+    //     if(err ){
+    //       console.log(err)
+    //     }
+    //     else{
+    //       console.log(result)
+    //       res.send(result)
+    //     }
+    //   });
 })
 
 router.post('/finduser',(req,res)=>{
