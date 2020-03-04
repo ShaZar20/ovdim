@@ -5,10 +5,14 @@ const Schema = mongoose.Schema;
 
 const Users = new Schema (
     {
-        name:String,
-        phone:String,
         id:String,
-        role:String
+        name:String,
+        lastName:String,
+        unit:String,
+        bigUnit:String,
+        role:String,
+        mail:String,
+        phone:String
     }
   );
   module.exports = mongoose.model("users",Users,'users');
