@@ -11,12 +11,15 @@ export default class Type2 extends React.Component {
             melave: "asd",
             menoalimYeshirim: [],
             merakezHanaga: "",
+            notniShirot: ["sdd", "aasss", "sdde", "test1", "test2"],
             textValue1: "",
             textValue2: "",
             textValue3: "",
+            textValue4: "",
             melaveNamesResultes: [],
             menoalimNamesResultes: [],
             merakezNamesResultes: [],
+            notniShirotNamesResultes: [],
             namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
         }
     }
@@ -67,12 +70,35 @@ export default class Type2 extends React.Component {
           }
     };  
 
-    menoalinNameSelect = (name) => {
+    menoalimNameSelect = (name) => {
         if(this.state.menoalimYeshirim.length < 8) {
            return this.setState(prevState => ({menoalimYeshirim: [...prevState.menoalimYeshirim,name], textValue1: ""})); 
         }
         else{
             return this.setState({textValue1: name})
+        }
+    };
+
+    onNotenShirotChange = (text = "") =>  {
+        if (text === "") {
+        return this.setState({
+            textValue4: "", 
+            notniShirotNamesResultes: []
+        })
+        }
+        const resultes = [...this.state.namesArr.filter(name => name.toLowerCase().trim().indexOf(text.toLowerCase().trim()) !== -1)];
+        this.setState({
+            textValue4: text,
+            notniShirotNamesResultes: resultes
+        })
+    };
+
+    notniShrirotNameSelect = (name) => {
+        if(this.state.notniShirot.length < 8) {
+           return this.setState(prevState => ({notniShirot: [...prevState.notniShirot,name], textValue4: ""})); 
+        }
+        else{
+            return this.setState({textValue4: name})
         }
     };
 
@@ -97,7 +123,7 @@ export default class Type2 extends React.Component {
                         {this.state.menoalimNamesResultes.map((name, i) => 
                         <li
                             key={i}
-                            onClick={(e) => {this.menoalinNameSelect(name)}}
+                            onClick={(e) => {this.menoalimNameSelect(name)}}
                         >
                         {name}
                         </li>)}
@@ -109,7 +135,7 @@ export default class Type2 extends React.Component {
                             </div> )
                         }    
                     </div>
-                    <p>* מי מלווה אותי מקצועית ?</p>
+                    <p>* מי הרכז/ת המרחבי שמלווה אותי ?</p>
                     <div className="code-input">
                         <img src={sLogo} alt="sLogo" className="sLogo" />
                         <input
@@ -161,6 +187,32 @@ export default class Type2 extends React.Component {
                             {this.state.merakezHanaga}<TiDelete onClick={(e) => {this.setState({merakezHanaga: ""})}}/>
                         </div>}
                     </div>
+                    <p>מי בעלי התפקיד המקצועי ממחלקות המטה שנותנים לי שירות ?</p>
+                    <div className="code-input">
+                        <img src={sLogo} alt="sLogo" className="sLogo" />
+                        <input
+                            placeholder="חיפוש על פי שם מלא"
+                            onChange = {(e) => {this.onNotenShirotChange(e.target.value); }}
+                            value = {this.state.textValue4}
+                    
+                        />
+                        {this.state.textValue4 && <TiDelete onClick= {(e) => {this.setState({textValue4: ""})}}/>}
+                    </div>
+                    <ul hidden={!this.state.textValue4}>
+                        {this.state.notniShirotNamesResultes.map((name, i) => 
+                        <li
+                            key={i}
+                            onClick={(e) => {this.notniShrirotNameSelect(name)}}
+                        >
+                        {name}
+                        </li>)}
+                    </ul>
+                    <div>ניתן לבחור עד 8 אנשים</div>
+                    <div className="container-selected_names">
+                        {this.state.notniShirot && this.state.notniShirot.map((name, i) =>
+                            <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.notniShirot.splice(i,1)); }}/></div> )}
+                    </div>
+                    
                     <button 
                         className="login-button"
                         disabled={!this.state.melave || this.state.menoalimYeshirim.length === 0 || !this.state.merakezHanaga}

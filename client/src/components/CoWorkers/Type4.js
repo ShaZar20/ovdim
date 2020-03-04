@@ -10,10 +10,13 @@ export default class Type4 extends React.Component {
         this.state = {
             melaveShevet: "asd",
             merakezHanaga: "",
+            melaveMiktzoey: "",
             textValue1: "",
             textValue2: "",
+            textValue3: "",
             melaveShevetNamesResultes: [],
             merakezNamesResultes: [],
+            melaveMiktzoeyNamesResultes: [],
             namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
         }
     }
@@ -48,7 +51,23 @@ export default class Type4 extends React.Component {
                   merakezNamesResultes: resultes
               })
           }
-    };  
+    };
+    
+    onMelaveMiktzoeyChange = (text = "") =>  {
+        if (text === "") {
+          return this.setState({
+            textValue3: "", 
+            melaveMiktzoeyNamesResultes: []
+          })
+        }
+        else {
+            const resultes = [...this.state.namesArr.filter(name => name.toLowerCase().trim().indexOf(text.toLowerCase().trim()) !== -1)];
+            return this.setState({
+                textValue3: text,
+                melaveMiktzoeyNamesResultes: resultes
+            })
+        }
+    };
 
     render() {
         return (
@@ -108,9 +127,36 @@ export default class Type4 extends React.Component {
                             {this.state.merakezHanaga}<TiDelete onClick={(e) => {this.setState({merakezHanaga: ""})}}/>
                         </div>}
                     </div>
+                    <p>* מי מלווה אותי מקצועית בהנהגה ?</p>
+                    <div className="code-input">
+                        <img src={sLogo} alt="sLogo" className="sLogo" />
+                        <input
+                            placeholder="חיפוש על פי שם מלא"
+                            onChange = {(e) => {this.onMelaveMiktzoeyChange(e.target.value); }}
+                            value = {this.state.textValue3}
+                    
+                        />
+                        {this.state.textValue3 && <TiDelete onClick= {(e) => {this.setState({textValue3: ""})}}/>}
+                    </div>
+                    <ul hidden={!this.state.textValue3}>
+                        {this.state.melaveMiktzoeyNamesResultes.map((name, i) => 
+                        <li
+                            key={i}
+                            onClick={(e) => {this.setState({melaveMiktzoey: name, textValue3: ""})}}
+                        >
+                        {name}
+                        </li>)}
+                    </ul>
+                    <div>ניתן לבחור עד 1 אנשים</div>
+                    <div>
+                        {this.state.melaveMiktzoey && <div className="selected-input">
+                            {this.state.melaveMiktzoey}<TiDelete onClick={(e) => {this.setState({melaveMiktzoey: ""})}}/>
+                        </div>}
+                    </div>
+
                     <button 
                         className="login-button"
-                        disabled={!this.state.melaveShevet || !this.state.merakezHanaga}
+                        disabled={!this.state.melaveShevet || !this.state.merakezHanaga || !this.state.melaveMiktzoey}
                     >
                     התחלת התהליך
                     </button>
