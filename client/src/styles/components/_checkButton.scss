@@ -1,0 +1,33 @@
+.ck-button{
+    margin: 4px;
+    border-radius: 20px;
+    font-size: small;
+    cursor: pointer;
+    span{
+        text-align: center;
+        background: #e0e0e0;
+        padding: .6rem 2rem;
+        border-radius: 20px;
+        margin-top: .3rem;
+        
+    }
+    
+    input[type=checkbox] + span {
+        color: black;
+      } 
+      input[type=checkbox]:checked + span {
+        background-color: #2F80ED;
+        color: white;
+        font-style: normal;
+      }
+}
+
+.check-hidden {
+    visibility: hidden;
+    position: absolute;
+}
+
+.ck-box {
+    display: flex;
+    flex-wrap: wrap;
+}

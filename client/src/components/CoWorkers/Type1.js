@@ -8,12 +8,15 @@ export default class Type1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            menalYashir: "asd",
+            menalYashir: "",
             menoalimYeshirim: ["sdd", "aasss", "sdde", "test1", "test2"],
+            notniShirot: ["sdd", "aasss", "sdde", "test1", "test2"],
             textValue1: "",
             textValue2: "",
+            textValue3: "",
             menalNamesResultes: [],
             menoalimNamesResultes: [],
+            notniShirotNamesResultes: [],
             namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
         }
     }
@@ -57,6 +60,28 @@ export default class Type1 extends React.Component {
         }
     };
 
+    onNotenShirotChange = (text = "") =>  {
+        if (text === "") {
+        return this.setState({
+            textValue3: "", 
+            notniShirotNamesResultes: []
+        })
+        }
+        const resultes = [...this.state.namesArr.filter(name => name.toLowerCase().trim().indexOf(text.toLowerCase().trim()) !== -1)];
+        this.setState({
+            textValue3: text,
+            notniShirotNamesResultes: resultes
+        })
+    };
+
+    notniShrirotNameSelect = (name) => {
+        if(this.state.notniShirot.length < 8) {
+           return this.setState(prevState => ({notniShirot: [...prevState.notniShirot,name], textValue3: ""})); 
+        }
+        else{
+            return this.setState({textValue3: name})
+        }
+    };
 
     render() {
         return (
@@ -115,6 +140,32 @@ export default class Type1 extends React.Component {
                         {this.state.menoalimYeshirim && this.state.menoalimYeshirim.map((name, i) =>
                             <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.menoalimYeshirim.splice(i,1)); }}/></div> )}
                     </div>
+                    <p>מי בעלי התפקיד המקצועי ממחלקות המטה שנותנים לי שירות ?</p>
+                    <div className="code-input">
+                        <img src={sLogo} alt="sLogo" className="sLogo" />
+                        <input
+                            placeholder="חיפוש על פי שם מלא"
+                            onChange = {(e) => {this.onNotenShirotChange(e.target.value); }}
+                            value = {this.state.textValue3}
+                    
+                        />
+                        {this.state.textValue3 && <TiDelete onClick= {(e) => {this.setState({textValue3: ""})}}/>}
+                    </div>
+                    <ul hidden={!this.state.textValue3}>
+                        {this.state.notniShirotNamesResultes.map((name, i) => 
+                        <li
+                            key={i}
+                            onClick={(e) => {this.notniShrirotNameSelect(name)}}
+                        >
+                        {name}
+                        </li>)}
+                    </ul>
+                    <div>ניתן לבחור עד 8 אנשים</div>
+                    <div className="container-selected_names">
+                        {this.state.notniShirot && this.state.notniShirot.map((name, i) =>
+                            <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.notniShirot.splice(i,1)); }}/></div> )}
+                    </div>
+                    
                     <button 
                         className="login-button"
                         disabled={!this.state.menalYashir || this.state.menoalimYeshirim.length === 0}

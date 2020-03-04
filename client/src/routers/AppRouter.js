@@ -11,7 +11,7 @@ import EnterPage from '../components/EnterPage';
 import Evaluation1 from '../components/evaluation/Evaluation1';
 import Evaluation2 from '../components/evaluation/Evaluation2';
 import Evaluation3 from '../components/evaluation/Evaluation3';
-import test from '../components/CoWorkers/Type1';
+import test from '../components/CoWorkers/Type6';
 
 
 
