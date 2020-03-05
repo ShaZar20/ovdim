@@ -8,7 +8,7 @@ export default class CoWorkers extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            namesArr: [],
+            namesArr: ["ששש","aaa","sss"],
             namesResultes: [],
             menalYashir: "שי עזר",
             menoalYashir: [],
@@ -59,7 +59,7 @@ export default class CoWorkers extends React.Component {
                 <h2>פרטים אודות המוערכות/ים שלי</h2> 
                 <div className="sub-container">
                     <SwitchForm 
-                        workerType = {1}
+                        workerType = {2}
                         onFormChange = {this.onFormChange}
                         namesResultes = {this.state.namesResultes} 
                         menalYashir = {this.state.menalYashir}

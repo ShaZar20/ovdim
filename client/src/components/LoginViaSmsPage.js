@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {BASE_URL} from '../constants'
 import axios from 'axios'
 import uuidv1 from 'uuid/v1';
 // import logo from '../images/Zofim-logo.png';
 import LoadingPage from './LoadingPage';
+import moment from 'moment'
 
 const LoginViaSmsPage = () => {
     const [phone,setPhone] = useState('')
@@ -15,6 +16,14 @@ const LoginViaSmsPage = () => {
     const [code,setCode] = useState('')
     const [pincode,setPinCode] = useState( Math.floor(100000 + Math.random() * 900000))
     
+    useEffect(()=>{
+        let x = JSON.parse(localStorage.getItem("isuser"))
+        if(moment()<=moment(x.time).add(10,'minutes')){
+            if(x.isuser == true){
+                window.location.href = "/01"
+            }
+        }
+    },[])
 
         return(
             <React.Fragment>
@@ -37,15 +46,18 @@ const LoginViaSmsPage = () => {
                                 setTimeout(()=>{
                                     setUp(false)
                                 },60000)
-                                setPress(!press)
+
                                 setPress1(!press1)
     
                                 axios
                                 .post(BASE_URL+'/api/validation/finduser',{id,phone})
                                 .then(res=>{
                                     console.log("finduser",res)
+                                    localStorage.setItem("isuser",JSON.stringify({isuser:res.data.IsUser,time:moment()}))
+                                    localStorage.setItem("userdata",JSON.stringify(res.data.data))
                                     if(res.data.IsUser){
                                         setLoader(true)
+                                        setPress(!press)
                                         let sendi = "972" + phonet.substr(1)
     
                                         axios
@@ -56,7 +68,7 @@ const LoginViaSmsPage = () => {
                                                 let tttt = setLoader
                                                 setTimeout(()=>{
                                                     tttt(false)
-                                                },1000)
+                                                },2000)
                                                 // setLoader(false)
                                             }
                                             else{
@@ -82,9 +94,10 @@ const LoginViaSmsPage = () => {
                         <button 
                             className="login-button"
                             disabled={!press}
-                            onClick={()=>{
+                            onClick={(e)=>{
+                                e.target.innerHTML = "checking.."
                                 if(code == pincode){
-                                    window.location.href = "/home"
+                                    window.location.href = "/01"
                                 }
                                 else{
                                     alert("אופס .. נראה שהקוד שהקשת לא נכון")

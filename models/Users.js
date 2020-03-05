@@ -12,7 +12,8 @@ const Users = new Schema (
         bigUnit:String,
         role:String,
         mail:String,
-        phone:String
+        phone:String,
+        step:String
     }
   );
   module.exports = mongoose.model("users",Users,'users');

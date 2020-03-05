@@ -22,7 +22,7 @@ import test from '../components/CoWorkers/Type6';
             <Switch>
                 <Route path="/" component={LoginViaSmsPage} exact={true} />
                 <Route path="/01" component={PersonalInfo} />
-                <Route path="/02" component={LoadingPage}  />
+                <Route path="/02" component={CoWorkers}  />
                 <Route path="/03" component={CoWorkers}  />
                 <Route path="/home" component={EnterPage}  />
                 <Route path="/05" component={Evaluation1}  />

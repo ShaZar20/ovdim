@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {NavLink} from 'react-router-dom'
 export default class PersonalInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -8,8 +8,20 @@ export default class PersonalInfo extends React.Component {
             name: "",
             hanaga: "",
             shevet: "",
-            job: ""
+            job: "",
+            disable:false
         };
+    }
+    componentDidMount(){
+        let x = JSON.parse(localStorage.getItem("userdata"))
+        console.log(x)
+        this.setState({
+            name:x.lastName + " " + x.name,
+            hanaga:x.bigUnit,
+            shevet:x.unit,
+            job:x.role,
+            disable:true
+        })
     }
 
     onNameChange = (e) => {
@@ -38,30 +50,34 @@ export default class PersonalInfo extends React.Component {
                 <div className="sub-container">
                     <h2 className="title-center">הפרטים האישיים שלי</h2>
                     <p>שם מלא *</p>
-                    <input 
+                    <input
+                        disabled={this.state.disable} 
                         type="text"
                         value={this.state.name}
                         onChange={this.onNameChange}
                     />
                     <p>הנהגה *</p>
-                    <input 
+                    <input
+                        disabled={this.state.disable} 
                         type="text"
                         value={this.state.hanaga}
                         onChange={this.onHanagaChange}
                     />
                     <p>שבט *</p>
-                    <input 
+                    <input
+                        disabled={this.state.disable} 
                         type="text"
                         value={this.state.shevet}
                         onChange={this.onShevetChange}
                     />
                     <p>תפקיד *</p>
-                    <input 
+                    <input
+                        disabled={this.state.disable} 
                         type="text"
                         value={this.state.job}
                         onChange={this.onJobChange}
                     />
-                    <button className="login-button">אישור</button>
+                    <NavLink to="/02" style={{marginTop:"2rem",textAlign:"left"}}><button className="login-button">אישור</button></NavLink>
                 </div>
             </div>
         )
