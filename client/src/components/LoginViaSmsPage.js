@@ -53,7 +53,6 @@ const LoginViaSmsPage = () => {
                                 .post(BASE_URL+'/api/validation/finduser',{id,phone})
                                 .then(res=>{
                                     console.log("finduser",res)
-                                    localStorage.setItem("isuser",JSON.stringify({isuser:res.data.IsUser,time:moment()}))
                                     localStorage.setItem("userdata",JSON.stringify(res.data.data))
                                     if(res.data.IsUser){
                                         setLoader(true)
@@ -97,6 +96,8 @@ const LoginViaSmsPage = () => {
                             onClick={(e)=>{
                                 e.target.innerHTML = "checking.."
                                 if(code == pincode){
+                                    localStorage.setItem("isuser",JSON.stringify({isuser:res.data.IsUser,time:moment()}))
+                                        
                                     window.location.href = "/01"
                                 }
                                 else{
