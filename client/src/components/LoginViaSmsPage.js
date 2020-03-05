@@ -96,7 +96,7 @@ const LoginViaSmsPage = () => {
                             onClick={(e)=>{
                                 e.target.innerHTML = "checking.."
                                 if(code == pincode){
-                                    localStorage.setItem("isuser",JSON.stringify({isuser:res.data.IsUser,time:moment()}))
+                                    localStorage.setItem("isuser",JSON.stringify({isuser:true,time:moment()}))
                                         
                                     window.location.href = "/01"
                                 }
