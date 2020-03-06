@@ -4,19 +4,22 @@ import { TiDelete } from 'react-icons/ti';
 
 
 
-export default class Type1 extends React.Component {
+export default class Type7 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             menalYashir: "",
             menoalimYeshirim: ["sdd", "aasss", "sdde", "test1", "test2"],
+            meloveMerhav: [],
             notniShirot: ["sdd", "aasss", "sdde", "test1", "test2"],
             textValue1: "",
             textValue2: "",
             textValue3: "",
+            textValue4: "",
             menalNamesResultes: [],
             menoalimNamesResultes: [],
             notniShirotNamesResultes: [],
+            meloveMerhavNamesResultes: [],
             namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
         }
     }
@@ -83,6 +86,29 @@ export default class Type1 extends React.Component {
         }
     };
 
+    onMeloveMerhavChange = (text = "") =>  {
+        if (text === "") {
+        return this.setState({
+            textValue4: "", 
+            meloveMerhavNamesResultes: []
+        })
+        }
+        const resultes = [...this.state.namesArr.filter(name => name.toLowerCase().trim().indexOf(text.toLowerCase().trim()) !== -1)];
+        this.setState({
+            textValue4: text,
+            meloveMerhavNamesResultes: resultes
+        })
+    };
+
+    melaveMerhavNameSelect = (name) => {
+        if(this.state.meloveMerhav.length < 8) {
+           return this.setState(prevState => ({meloveMerhav: [...prevState.meloveMerhav,name], textValue4: ""})); 
+        }
+        else{
+            return this.setState({textValue4: name})
+        }
+    };
+
     render() {
         return (
             <div className="">
@@ -140,6 +166,33 @@ export default class Type1 extends React.Component {
                         {this.state.menoalimYeshirim && this.state.menoalimYeshirim.map((name, i) =>
                             <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.menoalimYeshirim.splice(i,1)); }}/></div> )}
                     </div>
+                    <p>* את מי אני מלווה מצוות מרחב ?</p>
+                    <div className="code-input">
+                        <img src={sLogo} alt="sLogo" className="sLogo" />
+                        <input
+                            placeholder="חיפוש על פי שם מלא"
+                            onChange = {(e) => {this.onMeloveMerhavChange(e.target.value); }}
+                            value = {this.state.textValue4}
+                    
+                        />
+                        {this.state.textValue4 && <TiDelete onClick= {(e) => {this.setState({textValue4: ""})}}/>}
+                    </div>
+                    <ul hidden={!this.state.textValue4}>
+                        {this.state.meloveMerhavNamesResultes.map((name, i) => 
+                        <li
+                            key={i}
+                            onClick={(e) => {this.melaveMerhavNameSelect(name)}}
+                        >
+                        {name}
+                        </li>)}
+                    </ul>
+                    <div>ניתן לבחור עד 8 אנשים</div>
+
+                    <div className="container-selected_names">
+                        {this.state.meloveMerhav && this.state.meloveMerhav.map((name, i) =>
+                            <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.meloveMerhav.splice(i,1)); }}/></div> )}
+                    </div>
+
                     <p>מי בעלי התפקיד המקצועי ממחלקות המטה שנותנים לי שירות ?</p>
                     <div className="code-input">
                         <img src={sLogo} alt="sLogo" className="sLogo" />
@@ -168,7 +221,7 @@ export default class Type1 extends React.Component {
                     
                     <button 
                         className="login-button"
-                        disabled={!this.state.menalYashir || this.state.menoalimYeshirim.length === 0}
+                        disabled={!this.state.menalYashir || this.state.menoalimYeshirim.length === 0 || this.state.meloveMerhav.length === 0}
                     >
                     התחלת התהליך
                     </button>

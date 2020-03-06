@@ -7,7 +7,7 @@ const Evaluation3 = () => (
         <div className="title">אני בחר/י 3 מאפיינים הבאים לידי ביטוי בצורה טובה בעבודה שלו/שלה</div>
         <Form3 />
         <div className="buttonToLeft-container">
-            <button className="login-button">לשאלה הבאה</button>
+            <button className="login-button" onSubmit>לשאלה הבאה</button>
         </div>
     </div>
 );

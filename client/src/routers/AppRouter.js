@@ -11,7 +11,7 @@ import EnterPage from '../components/EnterPage';
 import Evaluation1 from '../components/evaluation/Evaluation1';
 import Evaluation2 from '../components/evaluation/Evaluation2';
 import Evaluation3 from '../components/evaluation/Evaluation3';
-// import test from '../components/CoWorkers/Type6';
+import test from '../components/CoWorkers/Type9';
 import Main from '../components/CoWorkers/Main';
 
 
@@ -28,7 +28,7 @@ import Main from '../components/CoWorkers/Main';
                 <Route path="/05" component={Evaluation1}  />
                 <Route path="/06" component={Evaluation2}  />
                 <Route path="/07" component={Evaluation3}  />
-                {/* <Route path="/test" component={test} /> */}
+                <Route path="/test" component={test} />
                 <Route component={NotFoundPage} />
             </Switch>
             <ProgressLine />

@@ -4,63 +4,48 @@ import { TiDelete } from 'react-icons/ti';
 
 
 
-export default class Type1 extends React.Component {
+export default class Type7 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            menalYashir: "",
-            menoalimYeshirim: ["sdd", "aasss", "sdde", "test1", "test2"],
+            menalYashir: ["sdd"],
+            menoalimYeshirim: [],
             notniShirot: ["sdd", "aasss", "sdde", "test1", "test2"],
-            textValue1: "",
             textValue2: "",
             textValue3: "",
+            textValue4: "",
             menalNamesResultes: [],
-            menoalimNamesResultes: [],
+            menalYashirNamesResultes: [],
             notniShirotNamesResultes: [],
+            menoalimYeshirimNamesResultes: [],
             namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
         }
     }
     
-    onMenalChange = (text = "") =>  {
-    if (text === "") {
-      return this.setState({
-        textValue1: "", 
-        menalNamesResultes: []
-      })
-    }
-    else {
-        const resultes = [...this.state.namesArr.filter(name => name.toLowerCase().trim().indexOf(text.toLowerCase().trim()) !== -1)];
-        return this.setState({
-            textValue1: text,
-            menalNamesResultes: resultes
-        })
-    }
-    };
-
-    onMenoalimChange = (text = "") =>  {
+    onMenalYashirChange = (text = "") =>  {
         if (text === "") {
         return this.setState({
             textValue2: "", 
-            menoalimNamesResultes: []
+            menalYashirNamesResultes: []
         })
         }
         const resultes = [...this.state.namesArr.filter(name => name.toLowerCase().trim().indexOf(text.toLowerCase().trim()) !== -1)];
         this.setState({
             textValue2: text,
-            menoalimNamesResultes: resultes
+            menalYashirNamesResultes: resultes
         })
     };
 
-    menoalinNameSelect = (name) => {
-        if(this.state.menoalimYeshirim.length < 8 ) {
-           return this.setState(prevState => ({menoalimYeshirim: [...prevState.menoalimYeshirim,name], textValue2: ""})); 
+    menalYashirNameSelect = (name) => {
+        if(this.state.menalYashir.length < 1 ) {
+           return this.setState(prevState => ({menalYashir: [...prevState.menalYashir,name], textValue2: ""})); 
         }
         else{
             return this.setState({textValue2: name})
         }
     };
 
-    onNotenShirotChange = (text = "") =>  {
+    onNotniShirotChange = (text = "") =>  {
         if (text === "") {
         return this.setState({
             textValue3: "", 
@@ -74,12 +59,35 @@ export default class Type1 extends React.Component {
         })
     };
 
-    notniShrirotNameSelect = (name) => {
+    notniShirottNameSelect = (name) => {
         if(this.state.notniShirot.length < 8) {
            return this.setState(prevState => ({notniShirot: [...prevState.notniShirot,name], textValue3: ""})); 
         }
         else{
             return this.setState({textValue3: name})
+        }
+    };
+
+    onMenoalimYeshirimChange = (text = "") =>  {
+        if (text === "") {
+        return this.setState({
+            textValue4: "", 
+            menoalimYeshirimNamesResultes: []
+        })
+        }
+        const resultes = [...this.state.namesArr.filter(name => name.toLowerCase().trim().indexOf(text.toLowerCase().trim()) !== -1)];
+        this.setState({
+            textValue4: text,
+            menoalimYeshirimNamesResultes: resultes
+        })
+    };
+
+    menoalimYeshirimNameSelect = (name) => {
+        if(this.state.menoalimYeshirim.length < 8) {
+           return this.setState(prevState => ({menoalimYeshirim: [...prevState.menoalimYeshirim,name], textValue4: ""})); 
+        }
+        else{
+            return this.setState({textValue4: name})
         }
     };
 
@@ -89,63 +97,65 @@ export default class Type1 extends React.Component {
                 <div className="container">  
                 <h2>פרטים אודות המוערכות/ים שלי</h2> 
                 <div className="sub-container">
+                    
                     <p>* מי המנהל/ת הישיר/ה שלי ?</p>
                     <div className="code-input">
                         <img src={sLogo} alt="sLogo" className="sLogo" />
                         <input
                             placeholder="חיפוש על פי שם מלא"
-                            onChange = {(e) => { this.onMenalChange(e.target.value); }}
-                            value = {this.state.textValue1}
-                    
-                        />
-                        {this.state.textValue1 && <TiDelete onClick={(e) => {this.setState({textValue1:""});}} />} 
-                    </div>
-                    <ul hidden={!this.state.textValue1}>
-                        {this.state.menalNamesResultes.map((name, i) => 
-                        <li
-                            key={i}
-                            onClick={(e) => {this.setState({menalYashir: name, textValue1: ""})}}
-                        >
-                        {name}
-                        </li>)}
-                    </ul>
-                    <div>ניתן לבחור עד 1 אנשים</div>
-                    <div>
-                        {this.state.menalYashir && <div className="selected-input">
-                            {this.state.menalYashir}<TiDelete onClick={(e) => {this.setState({menalYashir: ""})}}/>
-                        </div>}
-                    </div>
-                    <p>* את מי אני מנהל/ת באופן ישיר ?</p>
-                    <div className="code-input">
-                        <img src={sLogo} alt="sLogo" className="sLogo" />
-                        <input
-                            placeholder="חיפוש על פי שם מלא"
-                            onChange = {(e) => {this.onMenoalimChange(e.target.value); }}
+                            onChange = {(e) => {this.onMenalYashirChange(e.target.value); }}
                             value = {this.state.textValue2}
                     
                         />
                         {this.state.textValue2 && <TiDelete onClick= {(e) => {this.setState({textValue2: ""})}}/>}
                     </div>
                     <ul hidden={!this.state.textValue2}>
-                        {this.state.menoalimNamesResultes.map((name, i) => 
+                        {this.state.menalYashirNamesResultes.map((name, i) => 
                         <li
                             key={i}
-                            onClick={(e) => {this.menoalinNameSelect(name)}}
+                            onClick={(e) => {this.menalYashirNameSelect(name)}}
+                        >
+                        {name}
+                        </li>)}
+                    </ul>
+                    <div>ניתן לבחור עד 1 אנשים</div>
+                    <div className="container-selected_names">
+                        {this.state.menalYashir && this.state.menalYashir.map((name, i) =>
+                            <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.menalYashir.splice(i,1)); }}/></div> )}
+                    </div>
+                    <p>* את מי אני מנהל/ת באופן ישיר ?</p>
+                    <div className="code-input">
+                        <img src={sLogo} alt="sLogo" className="sLogo" />
+                        <input
+                            placeholder="חיפוש על פי שם מלא"
+                            onChange = {(e) => {this.onMenoalimYeshirimChange(e.target.value); }}
+                            value = {this.state.textValue4}
+                    
+                        />
+                        {this.state.textValue4 && <TiDelete onClick= {(e) => {this.setState({textValue4: ""})}}/>}
+                    </div>
+                    <ul hidden={!this.state.textValue4}>
+                        {this.state.menoalimYeshirimNamesResultes.map((name, i) => 
+                        <li
+                            key={i}
+                            onClick={(e) => {this.menoalimYeshirimNameSelect(name)}}
                         >
                         {name}
                         </li>)}
                     </ul>
                     <div>ניתן לבחור עד 8 אנשים</div>
+
                     <div className="container-selected_names">
                         {this.state.menoalimYeshirim && this.state.menoalimYeshirim.map((name, i) =>
                             <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.menoalimYeshirim.splice(i,1)); }}/></div> )}
                     </div>
+
                     <p>מי בעלי התפקיד המקצועי ממחלקות המטה שנותנים לי שירות ?</p>
                     <div className="code-input">
                         <img src={sLogo} alt="sLogo" className="sLogo" />
                         <input
                             placeholder="חיפוש על פי שם מלא"
-                            onChange = {(e) => {this.onNotenShirotChange(e.target.value); }}
+                            onChange = {(e) => {this.onNotniShirotChange(e.target.value); }}
                             value = {this.state.textValue3}
                     
                         />
@@ -155,7 +165,7 @@ export default class Type1 extends React.Component {
                         {this.state.notniShirotNamesResultes.map((name, i) => 
                         <li
                             key={i}
-                            onClick={(e) => {this.notniShrirotNameSelect(name)}}
+                            onClick={(e) => {this.notniShirottNameSelect(name)}}
                         >
                         {name}
                         </li>)}
@@ -168,7 +178,7 @@ export default class Type1 extends React.Component {
                     
                     <button 
                         className="login-button"
-                        disabled={!this.state.menalYashir || this.state.menoalimYeshirim.length === 0}
+                        disabled={!this.state.menalYashir || this.state.menalYashir.length === 0 || this.state.menoalimYeshirim.length === 0 }
                     >
                     התחלת התהליך
                     </button>
