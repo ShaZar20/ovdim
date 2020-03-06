@@ -3,12 +3,12 @@
     border-radius: 20px;
     font-size: small;
     cursor: pointer;
+    margin-top: 1rem;
     span{
         text-align: center;
         background: #e0e0e0;
         padding: .6rem 2rem;
         border-radius: 20px;
-        margin-top: .3rem;
         
     }
     
@@ -30,4 +30,5 @@
 .ck-box {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 1rem;
 }
