@@ -9,9 +9,11 @@ import Type5 from './Type5';
 const Main = () => {
 
     const [type,setType] = useState(1)
+    
     useEffect(()=>{
         let x = JSON.parse(localStorage.getItem("userdata"))
         console.log(x)
+        
     },[])
     
     switch(type) {
@@ -24,3 +26,4 @@ const Main = () => {
 };
 
 export default Main;
+

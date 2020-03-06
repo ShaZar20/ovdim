@@ -77,7 +77,7 @@ export default class PersonalInfo extends React.Component {
                         value={this.state.job}
                         onChange={this.onJobChange}
                     />
-                    <NavLink to="/02" style={{marginTop:"2rem",textAlign:"left"}}><button className="login-button">אישור</button></NavLink>
+                    <NavLink to="/02" style={{textAlign:"left"}}><button className="login-button">אישור</button></NavLink>
                 </div>
             </div>
         )
