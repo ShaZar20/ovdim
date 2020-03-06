@@ -18,24 +18,15 @@ const LoginViaSmsPage = () => {
     
     useEffect(()=>{
         let x = JSON.parse(localStorage.getItem("isuser"))
-<<<<<<< HEAD
         try{
             if(moment()<=moment(x.time).add(10,'minutes')){
                 if(x.isuser == true){
                     window.location.href = "/01"
                 }
             }
-        }
-        catch(err){
+        }catch(err){
             
         }
-=======
-        try{if(moment()<=moment(x.time).add(10,'minutes')){
-            if(x.isuser == true){
-                window.location.href = "/01"
-            }
-        }}catch(err){}
->>>>>>> 1be5114d07093bd0d8809fa6d21f9e9558ba69a4
     },[])
 
         return(

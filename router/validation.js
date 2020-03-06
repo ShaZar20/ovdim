@@ -41,9 +41,9 @@ router.post('/',(req,res)=>{
 router.post('/finduser',(req,res)=>{
   let query = {
     phone : req.body.phone,
-    id: req.body.id
+    id: parseInt(req.body.id)
   }
-
+  console.log(query)
   Users.findOne(query,(err,data)=>{
     if(err){
       console.log(err)

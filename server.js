@@ -6,6 +6,8 @@ const API_PORT = process.env.PORT || 3001;
 const router = express.Router();
 const app = express();
 const mongoose = require('mongoose');
+const Users = require('./models/Users');
+
 
 const validation = require("./router/validation");
 let bodyParser=require('body-parser');
@@ -32,6 +34,17 @@ db.once('open', () => console.log('connected to the database'));
 // checks if connection with the database is successful
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+
+router.post('/getusersby',(req,res)=>{
+  console.log(req.body.hanaga)
+})
+router.post('/getusers',(req,res)=>{
+  console.log("boom ")
+  Users.find({},(err,data)=>{
+    console.log(data)
+    res.send({data})
+  })
+})
 
 router.get('/',(req,res)=>{
     res.send({response:"i am alive"}).status(200);

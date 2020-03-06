@@ -169,6 +169,9 @@ export default class Type1 extends React.Component {
                     <button 
                         className="login-button"
                         disabled={!this.state.menalYashir || this.state.menoalimYeshirim.length === 0}
+                        onClick={()=>{
+                            console.log(this.state)
+                        }}
                     >
                     התחלת התהליך
                     </button>

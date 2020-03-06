@@ -8,10 +8,10 @@ export default class Type2 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            melave: "asd",
+            melave: "",
             menoalimYeshirim: [],
             merakezHanaga: "",
-            notniShirot: ["sdd", "aasss", "sdde", "test1", "test2"],
+            notniShirot: [],
             textValue1: "",
             textValue2: "",
             textValue3: "",
@@ -20,7 +20,7 @@ export default class Type2 extends React.Component {
             menoalimNamesResultes: [],
             merakezNamesResultes: [],
             notniShirotNamesResultes: [],
-            namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
+            namesArr: props.arr
         }
     }
     
