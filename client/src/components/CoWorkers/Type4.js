@@ -1,14 +1,14 @@
 import React from 'react';
 import sLogo from '../../images/search-logo.png';
 import { TiDelete } from 'react-icons/ti';
-
+import {Redirect} from 'react-router-dom'
 
 
 export default class Type4 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            melaveShevet: "asd",
+            melaveShevet: "",
             merakezHanaga: "",
             melaveMiktzoey: "",
             textValue1: "",
@@ -17,7 +17,8 @@ export default class Type4 extends React.Component {
             melaveShevetNamesResultes: [],
             merakezNamesResultes: [],
             melaveMiktzoeyNamesResultes: [],
-            namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
+            namesArr: props.arr,
+            redirect:false
         }
     }
     
@@ -157,9 +158,24 @@ export default class Type4 extends React.Component {
                     <button 
                         className="login-button"
                         disabled={!this.state.melaveShevet || !this.state.merakezHanaga || !this.state.melaveMiktzoey}
+                        onClick={()=>{
+                            console.log(this.state)
+                            let people = [this.state.merakezHanaga].concat([this.state.melaveShevet]).concat([this.state.melaveMiktzoey])
+                            console.log(people)
+                            // let data = {
+                            // }
+                            let data = {
+                                people:people
+                            }
+                            localStorage.setItem("about",JSON.stringify(data))
+                            this.setState({redirect:true})
+                        }}
+                    
+                    
                     >
                     התחלת התהליך
                     </button>
+                    {this.state.redirect && <Redirect to="/home" />}
                     </div>
                 </div>
             </div>

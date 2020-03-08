@@ -1,7 +1,7 @@
 import React from 'react';
 import sLogo from '../../images/search-logo.png';
 import { TiDelete } from 'react-icons/ti';
-
+import {Redirect} from 'react-router-dom'
 
 
 export default class Type7 extends React.Component {
@@ -9,9 +9,9 @@ export default class Type7 extends React.Component {
         super(props);
         this.state = {
             menalYashir: "",
-            menoalimYeshirim: ["sdd", "aasss", "sdde", "test1", "test2"],
+            menoalimYeshirim: [],
             meloveMerhav: [],
-            notniShirot: ["sdd", "aasss", "sdde", "test1", "test2"],
+            notniShirot: [],
             textValue1: "",
             textValue2: "",
             textValue3: "",
@@ -20,7 +20,8 @@ export default class Type7 extends React.Component {
             menoalimNamesResultes: [],
             notniShirotNamesResultes: [],
             meloveMerhavNamesResultes: [],
-            namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
+            namesArr: props.arr,
+            redirect:false
         }
     }
     
@@ -222,9 +223,20 @@ export default class Type7 extends React.Component {
                     <button 
                         className="login-button"
                         disabled={!this.state.menalYashir || this.state.menoalimYeshirim.length === 0 || this.state.meloveMerhav.length === 0}
+                        onClick={()=>{
+                            console.log(this.state)
+                            let people = [this.state.menalYashir].concat(this.state.menoalimYeshirim).concat(this.state.meloveMerhav).concat(this.state.notniShirot)
+                            console.log(people)
+                            let data = {
+                                people:people
+                            }
+                            localStorage.setItem("about",JSON.stringify(data))
+                            this.setState({redirect:true})
+                        }}
                     >
                     התחלת התהליך
                     </button>
+                    {this.state.redirect && <Redirect to="/home" />}
                     </div>
                 </div>
             </div>

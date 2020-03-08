@@ -16,7 +16,7 @@ export default class PersonalInfo extends React.Component {
         let x = JSON.parse(localStorage.getItem("userdata"))
         console.log(x)
         this.setState({
-            name:x.lastName + " " + x.name,
+            name:x.lastname + " " + x.name,
             hanaga:x.bigUnit,
             shevet:x.unit,
             job:x.role,

@@ -1,7 +1,7 @@
 import React from 'react';
 import sLogo from '../../images/search-logo.png';
 import { TiDelete } from 'react-icons/ti';
-
+import {Redirect} from 'react-router-dom'
 
 
 export default class Type6 extends React.Component {
@@ -11,7 +11,8 @@ export default class Type6 extends React.Component {
             deregMelove: [],
             textValue1: "",
             deregMeloveNamesResultes: [],
-            namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
+            namesArr: props.arr,
+            redirect:false
         }
     }
     
@@ -77,9 +78,21 @@ export default class Type6 extends React.Component {
                     <button 
                         className="login-button"
                         disabled={this.state.deregMelove.length === 0}
+                        onClick={()=>{
+                            console.log(this.state)
+                            let people = [...this.state.deregMelove]
+                            console.log(people)
+                            let data = {
+                                people:people
+                            }
+                            localStorage.setItem("about",JSON.stringify(data))
+                            this.setState({redirect:true})
+                        }}
+                    
                     >
                     התחלת התהליך
                     </button>
+                    {this.state.redirect && <Redirect to="/home" />}
                     </div>
                 </div>
             </div>

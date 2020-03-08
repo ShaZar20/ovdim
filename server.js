@@ -7,6 +7,7 @@ const router = express.Router();
 const app = express();
 const mongoose = require('mongoose');
 const Users = require('./models/Users');
+const Answers = require('./models/Answers');
 
 
 const validation = require("./router/validation");
@@ -39,10 +40,33 @@ router.post('/getusersby',(req,res)=>{
   console.log(req.body.hanaga)
 })
 router.post('/getusers',(req,res)=>{
-  console.log("boom ")
+  // console.log("boom ")
   Users.find({},(err,data)=>{
-    console.log(data)
+    // console.log(data)
     res.send({data})
+  })
+})
+
+
+router.post('/saveanswers',(req,res)=>{
+  console.log("save me")
+  console.log(req.body.data)
+  req.body.data.forEach((x,i)=>{
+    let query = {
+      from:x.from,
+      about:x.about,
+      question:x.question,
+    }
+    Answers.findOneAndUpdate(query,x,{upsert:true},function(err,doc){
+      if(err){
+        console.log(err)  
+      }
+      else{
+        if(i+1 == req.body.data.length){
+          res.send({done:true})
+        }
+      }
+    })
   })
 })
 

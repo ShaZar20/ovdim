@@ -1,6 +1,7 @@
 import React from 'react';
 import sLogo from '../../images/search-logo.png';
 import { TiDelete } from 'react-icons/ti';
+import {Redirect} from 'react-router-dom'
 
 
 
@@ -9,15 +10,16 @@ export default class Type1 extends React.Component {
         super(props);
         this.state = {
             menalYashir: "",
-            menoalimYeshirim: ["sdd", "aasss", "sdde", "test1", "test2"],
-            notniShirot: ["sdd", "aasss", "sdde", "test1", "test2"],
+            menoalimYeshirim: [],
+            notniShirot: [],
             textValue1: "",
             textValue2: "",
             textValue3: "",
             menalNamesResultes: [],
             menoalimNamesResultes: [],
             notniShirotNamesResultes: [],
-            namesArr: ["sdd", "aasss", "sdde", "test1", "test2"]
+            namesArr: props.arr,
+            redirect:false
         }
     }
     
@@ -171,10 +173,21 @@ export default class Type1 extends React.Component {
                         disabled={!this.state.menalYashir || this.state.menoalimYeshirim.length === 0}
                         onClick={()=>{
                             console.log(this.state)
+                            let people = [this.state.menalYashir].concat(this.state.menoalimYeshirim).concat(this.state.notniShirot)
+                            console.log(people)
+                            let data = {
+                                people:people
+                            }
+                            localStorage.setItem("about",JSON.stringify(data))
+                            this.setState({redirect:true})
+                            // let data = {
+                          
+                            // }
                         }}
                     >
                     התחלת התהליך
                     </button>
+                    {this.state.redirect && <Redirect to="/home" />}
                     </div>
                 </div>
             </div>
