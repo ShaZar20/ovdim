@@ -102,7 +102,7 @@ export default class Type7 extends React.Component {
     };
 
     melaveMerhavNameSelect = (name) => {
-        if(this.state.menalMerhav.length < 8) {
+        if(this.state.menalMerhav.length < 1) {
            return this.setState(prevState => ({menalMerhav: [...prevState.menalMerhav,name], textValue4: ""})); 
         }
         else{
@@ -125,7 +125,7 @@ export default class Type7 extends React.Component {
                             value = {this.state.textValue1}
                     
                         />
-                        {this.state.textValue1 && <TiDelete onClick={(e) => {this.setState({textValue1:""});}} />} 
+                        {this.state.textValue1 && <TiDelete style={{width:"2rem",height:"2rem"}} onClick={(e) => {this.setState({textValue1:""});}} />} 
                     </div>
                     <ul hidden={!this.state.textValue1}>
                         {this.state.menalNamesResultes.map((name, i) => 
@@ -139,7 +139,7 @@ export default class Type7 extends React.Component {
                     <div>ניתן לבחור עד 1 אנשים</div>
                     <div>
                         {this.state.menalYashir && <div className="selected-input">
-                            {this.state.menalYashir}<TiDelete onClick={(e) => {this.setState({menalYashir: ""})}}/>
+                            {this.state.menalYashir}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => {this.setState({menalYashir: ""})}}/>
                         </div>}
                     </div>
                     <p>* מי הדרג המקצועי אותו אני מלווה ?</p>
@@ -151,7 +151,7 @@ export default class Type7 extends React.Component {
                             value = {this.state.textValue2}
                     
                         />
-                        {this.state.textValue2 && <TiDelete onClick= {(e) => {this.setState({textValue2: ""})}}/>}
+                        {this.state.textValue2 && <TiDelete style={{width:"2rem",height:"2rem"}} onClick= {(e) => {this.setState({textValue2: ""})}}/>}
                     </div>
                     <ul hidden={!this.state.textValue2}>
                         {this.state.deregMeloveNamesResultes.map((name, i) => 
@@ -165,7 +165,7 @@ export default class Type7 extends React.Component {
                     <div>ניתן לבחור עד 8 אנשים</div>
                     <div className="container-selected_names">
                         {this.state.deregMelove && this.state.deregMelove.map((name, i) =>
-                            <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.deregMelove.splice(i,1)); }}/></div> )}
+                            <div  className="selected-input">{name}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => { this.setState(this.state.deregMelove.splice(i,1)); }}/></div> )}
                     </div>
                     <p>* מי מנהל המרחב שלי ?</p>
                     <div className="code-input">
@@ -176,7 +176,7 @@ export default class Type7 extends React.Component {
                             value = {this.state.textValue4}
                     
                         />
-                        {this.state.textValue4 && <TiDelete onClick= {(e) => {this.setState({textValue4: ""})}}/>}
+                        {this.state.textValue4 && <TiDelete style={{width:"2rem",height:"2rem"}} onClick= {(e) => {this.setState({textValue4: ""})}}/>}
                     </div>
                     <ul hidden={!this.state.textValue4}>
                         {this.state.menalMerhavNamesResultes.map((name, i) => 
@@ -187,11 +187,11 @@ export default class Type7 extends React.Component {
                         {name}
                         </li>)}
                     </ul>
-                    <div>ניתן לבחור עד 8 אנשים</div>
+                    <div>ניתן לבחור עד 1 אנשים</div>
 
                     <div className="container-selected_names">
                         {this.state.menalMerhav && this.state.menalMerhav.map((name, i) =>
-                            <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.menalMerhav.splice(i,1)); }}/></div> )}
+                            <div  className="selected-input">{name}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => { this.setState(this.state.menalMerhav.splice(i,1)); }}/></div> )}
                     </div>
 
                     <p>* את מי אני מלווה מצוות ההנהגה ?</p>
@@ -203,7 +203,7 @@ export default class Type7 extends React.Component {
                             value = {this.state.textValue3}
                     
                         />
-                        {this.state.textValue3 && <TiDelete onClick= {(e) => {this.setState({textValue3: ""})}}/>}
+                        {this.state.textValue3 && <TiDelete style={{width:"2rem",height:"2rem"}} onClick= {(e) => {this.setState({textValue3: ""})}}/>}
                     </div>
                     <ul hidden={!this.state.textValue3}>
                         {this.state.meloveMeanhagaNamesResultes.map((name, i) => 
@@ -217,7 +217,7 @@ export default class Type7 extends React.Component {
                     <div>ניתן לבחור עד 8 אנשים</div>
                     <div className="container-selected_names">
                         {this.state.meloveMeanhaga && this.state.meloveMeanhaga.map((name, i) =>
-                            <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.meloveMeanhaga.splice(i,1)); }}/></div> )}
+                            <div  className="selected-input">{name}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => { this.setState(this.state.meloveMeanhaga.splice(i,1)); }}/></div> )}
                     </div>
                     
                     <button 

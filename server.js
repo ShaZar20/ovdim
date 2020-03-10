@@ -36,8 +36,32 @@ db.once('open', () => console.log('connected to the database'));
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
+router.post('/getstatus',(req,res)=>{
+  let query ={
+    id:req.body.id
+  }
+  Users.findOne(query,(err,data)=>{
+    if(err)console.log(err)
+    res.send(data)
+  })
+})
+
+
+router.post('/setstatus',(req,res)=>{
+  let query ={
+    id:req.body.id
+  }
+  Users.findOneAndUpdate(query,{step:req.body.step},(err,data)=>{
+    if(err)console.log(err)
+    res.send(data)
+  })
+})
+
 router.post('/getusersby',(req,res)=>{
   console.log(req.body.hanaga)
+  Users.find({hanaga:req.body.hanaga},(err,data)=>{
+    res.send({data})
+  })
 })
 router.post('/getusers',(req,res)=>{
   // console.log("boom ")
@@ -47,15 +71,21 @@ router.post('/getusers',(req,res)=>{
   })
 })
 
-
+router.post('/getquestions',(req,res)=>{
+  console.log(req.body)
+  Answers.find({from:req.body.from},(err,data)=>{
+    console.log(data)
+    res.send(data)
+  })
+})
 router.post('/saveanswers',(req,res)=>{
   console.log("save me")
-  console.log(req.body.data)
+  console.log(req.body.data.length)
   req.body.data.forEach((x,i)=>{
     let query = {
       from:x.from,
       about:x.about,
-      question:x.question,
+      order:x.order,
     }
     Answers.findOneAndUpdate(query,x,{upsert:true},function(err,doc){
       if(err){

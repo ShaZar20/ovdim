@@ -1,5 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
+import axios from 'axios'
+import {BASE_URL} from '../constants'
 export default class PersonalInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -13,8 +15,43 @@ export default class PersonalInfo extends React.Component {
         };
     }
     componentDidMount(){
+        
         let x = JSON.parse(localStorage.getItem("userdata"))
         console.log(x)
+
+        axios
+        .post(BASE_URL+'/api/getstatus',{id:x.id})
+        .then(
+            res =>{
+                console.log(res)
+                if(res.data.step == "0"){
+                    axios
+                    .post(BASE_URL+'/api/setstatus',{id:x.id,step:"1"})
+                    .then(res=>{
+                        console.log(res)
+                    })
+                }
+                else {
+                    switch(res.data.step){
+                        case "2":
+                            window.location.href = "/02"
+                            break;
+                        case "3": 
+                            window.location.href ="/main"
+                            break;
+                        case "4":
+                            break;
+                        case "5":
+                            break;
+                        case "7":
+                            window.location.href = "/done";
+                            break;
+                    }
+                }
+            }
+        )
+
+        
         this.setState({
             name:x.lastname + " " + x.name,
             hanaga:x.bigUnit,
@@ -77,7 +114,11 @@ export default class PersonalInfo extends React.Component {
                         value={this.state.job}
                         onChange={this.onJobChange}
                     />
-                    <NavLink to="/02" style={{textAlign:"left"}}><button className="login-button">אישור</button></NavLink>
+                    <NavLink to="/02" style={{textAlign:"left"}}><button  className="login-button" style={{maxWidth:"unset",width:"100%"}}>אישור</button></NavLink>
+                    <div style={{fontWeight:"bold"}}>
+                        <p style={{textAlign:"center",margin:"0",marginTop:"10px"}} >יש לאשר את נכונות הפרטים.</p>
+                        <p style={{textAlign:"center",margin:"0"}}>במידה והפרטים לא נכונים - נא לפנות לרכז\ת משאבי אנוש מרחבי\ת.</p>
+                    </div>
                 </div>
             </div>
         )

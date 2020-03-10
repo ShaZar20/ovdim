@@ -20,6 +20,47 @@ const Main = () => {
 
     useEffect(()=>{
         let x = JSON.parse(localStorage.getItem("userdata"))
+
+        
+        axios
+        .post(BASE_URL+'/api/getstatus',{id:x.id})
+        .then(
+            res =>{
+                console.log(res)
+                if(res.data.step == "1"){
+                    axios
+                    .post(BASE_URL+'/api/setstatus',{id:x.id,step:"2"})
+                    .then(res=>{
+                        console.log(res)
+                    })
+                }
+                else {
+                    switch(res.data.step){
+                        case "0":
+                            window.location.href = "/"
+                            break;
+                        case "3": 
+                            window.location.href ="/main"
+                            break;
+                        case "1":
+                            window.location.href ="/01"
+                            break;
+                        case "5":
+                            break;
+                        case "7":
+                            window.location.href = "/done";
+                            break;
+                    }
+                }
+            }
+        )
+
+
+
+
+
+
+
         if(x.role == "מרכז/ת שבט"){
             axios
             .post(BASE_URL + '/api/getusersby/',{hanage:x.bigUnit})
@@ -89,15 +130,15 @@ const Main = () => {
     if(!loader){
         switch(type) {
             case 0: return (<div>damn</div>)
-            case 1: return <Type1 />
-            case 2: return <Type2 arr={arr}/> 
-            case 3: return <Type3 />
-            case 4: return <Type4 />
-            case 5: return <Type5 />
-            case 6: return <Type6 /> 
-            case 7: return <Type7 />
-            case 8: return <Type8 />
-            case 9: return <Type9 />
+            case 1: return <Type1 arr={arr} />
+            case 2: return <Type2 arr={arr} /> 
+            case 3: return <Type3 arr={arr} />
+            case 4: return <Type4 arr={arr} />
+            case 5: return <Type5 arr={arr} />
+            case 6: return <Type6 arr={arr} /> 
+            case 7: return <Type7 arr={arr} />
+            case 8: return <Type8 arr={arr} />
+            case 9: return <Type9 arr={arr} />
         }
     }
     else{

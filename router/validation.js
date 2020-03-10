@@ -15,14 +15,33 @@ router.post('/',(req,res)=>{
     console.log(req.body)
     // let x = req.body.number
     
+
+
+
+    const accountSid = 'AC5a4d3a2cfdb0e63cdd79ae842425f1d4';
+    const authToken = '054453e093918bfbe8b13665e4ebd163';
+    const client = require('twilio')(accountSid, authToken);
+
+    client.messages
+      .create({
+        body: ` היי , הקוד שלך הוא ${req.body.pincode}  `,
+        from: 'Ovdim Zofim',
+        to: `+${req.body.number}`
+      })
+      .then(message => 
+        {
+          console.log(message)
+          res.send({message,status:0})
+        }
+        );
     // send message
     // return the nexmo request id
     const from = 'Zofim Ovdim';
     const to = req.body.number;
     const text = 'Your code: ' + req.body.pincode;
     
-    nexmo.message.sendSms(from, to, text);   
-    res.send({status:0}) 
+    // nexmo.message.sendSms(from, to, text);   
+    // res.send({status:0}) 
     // nexmo.verify.request({
     //     number: req.body.number,
     //     brand: 'Nexmo',

@@ -56,7 +56,7 @@ export default class Type6 extends React.Component {
                             value = {this.state.textValue1}
                     
                         />
-                        {this.state.textValue1 && <TiDelete onClick={(e) => {this.setState({textValue1:""});}} />} 
+                        {this.state.textValue1 && <TiDelete style={{width:"2rem",height:"2rem"}} onClick={(e) => {this.setState({textValue1:""});}} />} 
                     </div>
                     <ul hidden={!this.state.textValue1}>
                         {this.state.deregMeloveNamesResultes.map((name, i) => 
@@ -70,7 +70,7 @@ export default class Type6 extends React.Component {
                     <div>ניתן לבחור עד 8 אנשים</div>
                     <div className="container-selected_names">
                         {this.state.deregMelove && this.state.deregMelove.map((name, i) =>
-                            <div  className="selected-input">{name}<TiDelete onClick={(e) => { this.setState(this.state.deregMelove.splice(i,1)); }}/>
+                            <div  className="selected-input">{name}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => { this.setState(this.state.deregMelove.splice(i,1)); }}/>
                             </div> )
                         }    
                     </div>

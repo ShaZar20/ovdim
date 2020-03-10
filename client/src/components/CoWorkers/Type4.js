@@ -85,7 +85,7 @@ export default class Type4 extends React.Component {
                             value = {this.state.textValue2}
                     
                         />
-                        {this.state.textValue2 && <TiDelete onClick= {(e) => {this.setState({textValue2: ""})}}/>}
+                        {this.state.textValue2 && <TiDelete style={{width:"2rem",height:"2rem"}} onClick= {(e) => {this.setState({textValue2: ""})}}/>}
                     </div>
                     <ul hidden={!this.state.textValue2}>
                         {this.state.melaveShevetNamesResultes.map((name, i) => 
@@ -99,7 +99,7 @@ export default class Type4 extends React.Component {
                     <div>ניתן לבחור עד 1 אנשים</div>
                     <div>
                         {this.state.melaveShevet && <div className="selected-input">
-                            {this.state.melaveShevet}<TiDelete onClick={(e) => {this.setState({melaveShevet: ""})}}/>
+                            {this.state.melaveShevet}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => {this.setState({melaveShevet: ""})}}/>
                         </div>}
                     </div>
                     <p>* מי מרכז/ת ההנהגה שלי ?</p>
@@ -111,7 +111,7 @@ export default class Type4 extends React.Component {
                             value = {this.state.textValue1}
                     
                         />
-                        {this.state.textValue1 && <TiDelete onClick= {(e) => {this.setState({textValue1: ""})}}/>}
+                        {this.state.textValue1 && <TiDelete style={{width:"2rem",height:"2rem"}} onClick= {(e) => {this.setState({textValue1: ""})}}/>}
                     </div>
                     <ul hidden={!this.state.textValue1}>
                         {this.state.merakezNamesResultes.map((name, i) => 
@@ -125,7 +125,7 @@ export default class Type4 extends React.Component {
                     <div>ניתן לבחור עד 1 אנשים</div>
                     <div>
                         {this.state.merakezHanaga && <div className="selected-input">
-                            {this.state.merakezHanaga}<TiDelete onClick={(e) => {this.setState({merakezHanaga: ""})}}/>
+                            {this.state.merakezHanaga}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => {this.setState({merakezHanaga: ""})}}/>
                         </div>}
                     </div>
                     <p>* מי מלווה אותי מקצועית בהנהגה ?</p>
@@ -137,7 +137,7 @@ export default class Type4 extends React.Component {
                             value = {this.state.textValue3}
                     
                         />
-                        {this.state.textValue3 && <TiDelete onClick= {(e) => {this.setState({textValue3: ""})}}/>}
+                        {this.state.textValue3 && <TiDelete style={{width:"2rem",height:"2rem"}} onClick= {(e) => {this.setState({textValue3: ""})}}/>}
                     </div>
                     <ul hidden={!this.state.textValue3}>
                         {this.state.melaveMiktzoeyNamesResultes.map((name, i) => 
@@ -151,7 +151,7 @@ export default class Type4 extends React.Component {
                     <div>ניתן לבחור עד 1 אנשים</div>
                     <div>
                         {this.state.melaveMiktzoey && <div className="selected-input">
-                            {this.state.melaveMiktzoey}<TiDelete onClick={(e) => {this.setState({melaveMiktzoey: ""})}}/>
+                            {this.state.melaveMiktzoey}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => {this.setState({melaveMiktzoey: ""})}}/>
                         </div>}
                     </div>
 

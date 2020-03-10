@@ -39,7 +39,7 @@ const LoginViaSmsPage = () => {
                     <h2 className="title-center">התחברות לאזור אישי באמצעות סמס</h2>
                     <div className="sub-container">
                         <p>תעודת זהות *</p>
-                        <input value={id} onChange={(e)=>setId(e.target.value)}/>
+                        <input style={{fontSize:"13px"}} value={id} onChange={(e)=>setId(e.target.value)}/>
                         <p>טלפון נייד *</p>
                         <div className="code-input">
                             <input value={phone} onChange={(e)=>setPhone(e.target.value)} />
@@ -88,6 +88,7 @@ const LoginViaSmsPage = () => {
                         </div>
                         <p>קוד *</p>
                         <input 
+                            style={{fontSize:"13px"}}
                             placeholder="יש להזין את הקוד שקיבלת"
                             disabled={!press}
                             value = {code}
