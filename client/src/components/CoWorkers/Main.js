@@ -62,10 +62,17 @@ const Main = () => {
 
 
         if(x.role == "מרכז/ת שבט"){
+            console.log(x)
             axios
-            .post(BASE_URL + '/api/getusersby/',{hanage:x.bigUnit})
+            .post(BASE_URL + '/api/getusersby/',{hanaga:x.bigUnit})
             .then(res=>{
                 console.log(res)
+                let b = []
+                res.data.data.map((x)=>{
+                    b.push(x.name + " "+ x.lastname )
+                })
+                setArr(b)
+                setLoader(false)
             })
         }
         else{
@@ -142,7 +149,7 @@ const Main = () => {
         }
     }
     else{
-        return <div></div>
+        return <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     }
 };
 

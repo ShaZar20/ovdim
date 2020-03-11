@@ -2,7 +2,7 @@ import React from 'react';
 import sLogo from '../../images/search-logo.png';
 import { TiDelete } from 'react-icons/ti';
 import {Redirect} from 'react-router-dom'
-
+import ProgressLine from '../ProgressLine'
 
 export default class Type7 extends React.Component {
     constructor(props) {
@@ -112,6 +112,7 @@ export default class Type7 extends React.Component {
 
     render() {
         return (
+            <React.Fragment>
             <div className="">
                 <div className="container">  
                 <h2>פרטים אודות המוערכות/ים שלי</h2> 
@@ -194,7 +195,7 @@ export default class Type7 extends React.Component {
                             <div  className="selected-input">{name}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => { this.setState(this.state.menoalimYeshirim.splice(i,1)); }}/></div> )}
                     </div>
 
-                    <p>מי בעלי התפקיד המקצועי ממחלקות המטה שנותנים לי שירות ? (רשות)</p>
+                    <p>מי בעלי התפקיד המקצועי ממחלקות המטה\הנהגה שנותנים לי שירות ? (רשות)</p>
                     <div className="code-input">
                         <img src={sLogo} alt="sLogo" className="sLogo" />
                         <input
@@ -242,6 +243,8 @@ export default class Type7 extends React.Component {
                     </div>
                 </div>
             </div>
+            <ProgressLine step={1} />
+            </React.Fragment>
         )
     }
 }

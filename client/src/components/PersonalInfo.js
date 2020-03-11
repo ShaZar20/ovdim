@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom'
 import axios from 'axios'
 import {BASE_URL} from '../constants'
+import ProgressLine from './ProgressLine'
 export default class PersonalInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -54,7 +55,7 @@ export default class PersonalInfo extends React.Component {
         
         this.setState({
             name:x.lastname + " " + x.name,
-            hanaga:x.bigUnit,
+            hanaga:x.bigunit,
             shevet:x.unit,
             job:x.role,
             disable:true
@@ -83,6 +84,7 @@ export default class PersonalInfo extends React.Component {
     
     render() {
         return (
+            <React.Fragment>
             <div className="container">
                 <div className="sub-container">
                     <h2 className="title-center">הפרטים האישיים שלי</h2>
@@ -121,6 +123,8 @@ export default class PersonalInfo extends React.Component {
                     </div>
                 </div>
             </div>
+            <ProgressLine step={0} />
+            </React.Fragment>
         )
     }
 }

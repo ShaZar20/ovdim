@@ -2,7 +2,7 @@ import React from 'react';
 import sLogo from '../../images/search-logo.png';
 import { TiDelete } from 'react-icons/ti';
 import {Redirect} from 'react-router-dom'
-
+import ProgressLine from '../ProgressLine'
 
 export default class Type6 extends React.Component {
     constructor(props) {
@@ -43,6 +43,7 @@ export default class Type6 extends React.Component {
 
     render() {
         return (
+            <React.Fragment>
             <div className="">
                 <div className="container">  
                 <h2>פרטים אודות המוערכות/ים שלי</h2> 
@@ -96,6 +97,8 @@ export default class Type6 extends React.Component {
                     </div>
                 </div>
             </div>
+            <ProgressLine step={1} />
+            </React.Fragment>
         )
     }
 }

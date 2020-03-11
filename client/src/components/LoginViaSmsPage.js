@@ -5,6 +5,15 @@ import uuidv1 from 'uuid/v1';
 // import logo from '../images/Zofim-logo.png';
 import LoadingPage from './LoadingPage';
 import moment from 'moment'
+const Nexmo = require('nexmo');
+
+const nexmo = new Nexmo({
+    apiKey: '8691da7f',
+    apiSecret: 'FBT1qvCHYI7vqcuP',
+  });
+
+
+  
 
 const LoginViaSmsPage = () => {
     const [phone,setPhone] = useState('')
@@ -57,28 +66,44 @@ const LoginViaSmsPage = () => {
                                 .post(BASE_URL+'/api/validation/finduser',{id,phone})
                                 .then(res=>{
                                     console.log("finduser",res)
-                                    localStorage.setItem("userdata",JSON.stringify(res.data.data))
                                     if(res.data.IsUser){
+                                        localStorage.setItem("userdata",JSON.stringify(res.data.data))
                                         setLoader(true)
+                                        let email = res.data.data.email
                                         setPress(!press)
                                         let sendi = "972" + phonet.substr(1)
-    
+                                        const from = 'Zofim Ovdim';
+                                        const to = sendi;
+                                        const text = 'Your code: ' + pincode;
                                         axios
-                                        .post(BASE_URL+'/api/validation/',{number:sendi,pincode:pincode})
+                                        .post(BASE_URL+'/api/validation/',{email:email,pincode:pincode})
                                         .then(res=>{
-                                            console.log("sms",res)
-                                            if(res.data.status == 0){
-                                                let tttt = setLoader
+                                            console.log(res)
+                                        })
+
+
+                                        nexmo.message.sendSms(from, to, text);
+                                        let tttt = setLoader
                                                 setTimeout(()=>{
                                                     tttt(false)
                                                 },2000)
-                                                // setLoader(false)
-                                            }
-                                            else{
-                                                alert("oops")
-                                            }
+                                        
+                                        // axios
+                                        // .post(BASE_URL+'/api/validation/',{number:sendi,pincode:pincode})
+                                        // .then(res=>{
+                                        //     console.log("sms",res)
+                                        //     if(res.data.status == 0){
+                                        //         let tttt = setLoader
+                                        //         setTimeout(()=>{
+                                        //             tttt(false)
+                                        //         },2000)
+                                        //         // setLoader(false)
+                                        //     }
+                                        //     else{
+                                        //         alert("oops")
+                                        //     }
                                             
-                                        })
+                                        // })
                                     }
                                     else{
                                         alert("מצטערים - נראה שהפרטים האלו לא נמצאים במערכת , בבקשה יידע את מחלקת משאבי אנוש")
@@ -99,7 +124,7 @@ const LoginViaSmsPage = () => {
                             className="login-button"
                             disabled={!press}
                             onClick={(e)=>{
-                                e.target.innerHTML = "checking.."
+                                e.target.innerHTML = "בבדיקה"
                                 if(code == pincode){
                                     localStorage.setItem("isuser",JSON.stringify({isuser:true,time:moment()}))
                                         

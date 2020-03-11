@@ -7,7 +7,7 @@ import {BASE_URL} from '../constants'
 import axios from 'axios'
 import _ from 'lodash'
 import { TiDelete } from 'react-icons/ti';
-
+import ProgressLine from './ProgressLine'
 
 const main = [{
     subject:"אשכול מדדי מקצועיות",
@@ -111,7 +111,7 @@ const main = [{
             type:"open"
         },
         {
-            main:"מהי מידת שביעות רצונך מתפקידך כיום בתנועת הצופים?",
+            main:"מהי מידת שביעות רצונך מתפקידך כיום בתנועת הצופים? ",
             type:"scala2"
         },
         {
@@ -233,6 +233,26 @@ const Scala = (arr,param,step,setq,setC,co) => {
                         5
                         <span className="checkmark" />
                     </label>
+                    <label className="input-box">
+                        <input type="checkbox" id="chB6" name="workerValue" checked={arr[i].content == 6 ? true : false} 
+                         onChange={(e) => {
+                             console.log("nbopo")
+                             let b = [...arr]
+                            if(b[i].content == ""){
+                                setC(co+1)
+                            }
+                            if(b[i].content == "6"){
+                                b[i].content = ""
+                            }
+                            else{
+                                b[i].content = 6
+                            }
+                            setq(b)
+                        }} 
+                        />
+                        6
+                        <span className="checkmark" />
+                    </label>
 
                 </div>
             </div>
@@ -269,7 +289,7 @@ const Questions = () => {
     const one = 1
     let update = false
     useEffect(()=>{
-        
+        //get users
         axios
         .post(BASE_URL + '/api/getusers/')
         .then(res=>{
@@ -279,16 +299,11 @@ const Questions = () => {
                 b.push(x.name + " "+ x.lastname )
             })
             setArr(b)
-            // setLoader(false)
         })
         
 
 
-        let x = JSON.parse(localStorage.getItem("about"))
         let x1 = JSON.parse(localStorage.getItem("userdata"))
-        // console.log(x,x1)
-        
-
         axios
         .post(BASE_URL+'/api/getstatus',{id:x1.id})
         .then(
@@ -325,11 +340,17 @@ const Questions = () => {
 
         
         let me = x1.name + " "+ x1.lastname
-        
-        
-       
-        let arrwithoutme = x.people;
-        let arrwithme = [...x.people].concat([x1.name + " "+ x1.lastname ])
+        console.log(me)
+        let arrwithoutme = []
+        let x = JSON.parse(localStorage.getItem("about"))
+            console.log(x)
+        if(x != null){
+            arrwithoutme = x.people;
+        }
+        console.log(arrwithoutme)
+        // let arrwithme = [...x.people].concat([x1.name + " "+ x1.lastname ])
+        let arrwithme = [x1.name + " "+ x1.lastname ].concat([...arrwithoutme])
+        console.log(arrwithme)
         setTotal(arrwithme.length)
         let quiz = []
         let counter = 0
@@ -374,8 +395,8 @@ const Questions = () => {
             // console.log(res)
             let arr = [...res.data]
             let arr1 = _.sortBy(arr, [function(o) { return o.order; }]);
-            console.log(arr)
-            console.log(arr1)
+            // console.log(arr)
+            // console.log(arr1)
             let z = true
             let counterq= 0
             arr1.map((w)=>{
@@ -387,33 +408,37 @@ const Questions = () => {
                 }
             })
             // res.data.map((w,i)=>{
-                setDoned(true)
+                
                 if(arr1.length!=0){
                     console.log("workinggggggggg")
                     setQuiz(arr1)
+                    setDoned(true)
                 }
                 else{
                     console.log("//////",quiz)
                     axios
                     .post(BASE_URL+'/api/saveanswers',{data:quiz})
                     .then(res=>{
-                        console.log(quizi)
+                        // console.log(quizi)
+                        setDoned(true)
                     })
                 }
             // })
         })
 
 
-
     },[])
     return (
+        <React.Fragment>
         <div>
-            {!doned && <div style={{width:"100%",margin:"4rem 0",textAlign:"center",fontSize:"20px"}}>
+            {!doned && <div style={{width:"100%",margin:"4rem 0",textAlign:"center",fontSize:"20px",display:"flex",flexDirection:"column"}}>
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                     מכינים את השאלות עבורך..
                 </div>}
             {quizi.length!=0 && doned &&
                 <React.Fragment>
-                    
+                    {console.log(step)}
+                    {console.log(quizi)}
                     {
                         quizi[step].type == "scala" ? 
                         <div>
@@ -458,6 +483,7 @@ const Questions = () => {
                                         disabled = {counte>=total ? false:true}
                                         onClick={()=>{
                                             setCounte(0)
+                                            window.scrollTo(0, 0);
                                 // console.log("boom")
                                 axios
                                 .post(BASE_URL+'/api/saveanswers',{data:quizi})
@@ -522,6 +548,8 @@ const Questions = () => {
                                         disabled = {counte>=one ? false:true}
                                         onClick={()=>{
                                             setCounte(0)
+                                            
+                                            window.scrollTo(0, 0);
                                 // console.log("boom")
                                 axios
                                 .post(BASE_URL+'/api/saveanswers',{data:quizi})
@@ -634,6 +662,8 @@ const Questions = () => {
                                     // disabled = {counte>=one ? false:true}
                                     onClick={()=>{
                                         setCounte(0)
+                                        
+                                        window.scrollTo(0, 0);
                                         quizi[step].content = JSON.stringify(chosen)
                                         console.log(quizi[step])
                             // console.log("boom")
@@ -643,6 +673,8 @@ const Questions = () => {
                                 // console.log(res)
                                 // setStep(step+one)
                                 setLoad(false)
+                                
+                                window.scrollTo(0, 0);
                             
                                 if(quizi.length == step+1){
                                     // alert("done")
@@ -687,7 +719,7 @@ const Questions = () => {
                                 }
                             <div className="container" style={{maxWidth:"850px"}}>
                             <div className="sub-title">{quizi[step].subject}</div>
-                            <div className="title" style={{marginBottom:"2rem"}}>{quizi[step].question} {quizi[step].about} {quizi[step].about == quizi[step].from && "(אני)"}</div>
+                            <div className="title" style={{marginBottom:"2rem"}}>{quizi[step].question} {quizi[step].about} {quizi[step].about == quizi[step].from ? "(אני)" : undefined}</div>
                             {
                                 quizi.map((w,e)=>{
                                     if (w.subject == quizi[step].subject && w.about == quizi[step].about && w.type == "scala" ){
@@ -714,7 +746,7 @@ const Questions = () => {
                             //   onChange={(e)=>{this.addactions(e,j)}}  
                               className="Card" 
                             //   key={j} 
-                              placeholder="פרט\י את הסיבות והדוגמאות המשקפות את הציונים המופיעים מעלה" 
+                              placeholder={quizi[step].subject == "אשכול אישי" ? "אנא פרט/י":"פרט/י את הסיבות והדוגמאות המשקפות את הציונים המופיעים מעלה"} 
                             //   value={z.value} 
                               /> 
                              <div className="buttonToLeft-container">
@@ -722,6 +754,8 @@ const Questions = () => {
                                 // disabled = {dis}
                                 className="login-button"
                                 onClick={()=>{
+                                    
+                                    window.scrollTo(0, 0);
                                     if(quizi[step].content == ""){
                                         quizi[step].content = "--ללא הערות--"
                                     }
@@ -757,6 +791,26 @@ const Questions = () => {
                 done && <Redirect to="/done"/>
             }
         </div>
+        {quizi.length!=0 && doned ?
+        <React.Fragment>
+        {
+            quizi[step].subject == "אשכול מדדי מקצועיות" && <ProgressLine  step={2} />
+        }
+        {
+            quizi[step].subject == "אשכול מדדי אישיות" && <ProgressLine  step={3} />
+        }
+        {
+            quizi[step].subject == "אשכול מדדי תנועת הצופים" && <ProgressLine  step={4} />
+        }
+        {
+            quizi[step].subject == "אשכול אישי" && <ProgressLine  step={5} />
+        }
+        </React.Fragment>
+        :
+        undefined    
+    }
+        
+        </React.Fragment>
     )
 }
 

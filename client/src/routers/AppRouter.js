@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import LoginViaSmsPage from '../components/LoginViaSmsPage';
 import PersonalInfo from '../components/PersonalInfo';
 import NotFoundPage from '../components/NotFoundPage';
@@ -23,7 +24,7 @@ import Final from '../components/Finalpage'
                 <Route exact={true} path="/done" component={Final}  />
                 <Route component={NotFoundPage} />
             </Switch>
-            <ProgressLine />
+            
         </div>
      </BrowserRouter>
  );

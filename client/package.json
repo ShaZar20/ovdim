@@ -11,6 +11,7 @@
     "bootstrap": "^4.4.1",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
+    "nexmo": "^2.6.0",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -19,6 +20,7 @@
     "react-scripts": "3.4.0",
     "react-textarea-autosize": "^7.1.2",
     "reactstrap": "^8.4.1",
+    "styled-components": "^5.0.1",
     "uuid": "^7.0.1"
   },
   "scripts": {

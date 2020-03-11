@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Axios from 'axios'
 import {BASE_URL} from '../constants'
-
+import ProgressLine from './ProgressLine'
 const Final = () => {
     useEffect(()=>{
         let x1 = JSON.parse(localStorage.getItem("userdata"))
@@ -17,9 +17,12 @@ const Final = () => {
     },[])
 
     return (
+        <React.Fragment>
         <div style={{margin:"5rem auto"}} className="enterPage-container">
             <h1>סיימת בהצלחה!</h1>
         </div>
+        <ProgressLine step={6} />
+        </React.Fragment>
     )
 }
 

@@ -58,11 +58,13 @@ router.post('/setstatus',(req,res)=>{
 })
 
 router.post('/getusersby',(req,res)=>{
-  console.log(req.body.hanaga)
-  Users.find({hanaga:req.body.hanaga},(err,data)=>{
+  console.log(req.body)
+  console.log("un")
+  Users.find({bigunit:req.body.hanaga},(err,data)=>{
     res.send({data})
   })
 })
+
 router.post('/getusers',(req,res)=>{
   // console.log("boom ")
   Users.find({},(err,data)=>{

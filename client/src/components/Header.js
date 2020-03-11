@@ -49,10 +49,10 @@ const Header = () => {
               ()=>{
                   localStorage.removeItem("isuser")
                   localStorage.removeItem("userdata")
-                  localStorage.removeItem("about")
+                //   localStorage.removeItem("about")
                   window.location.href = "/"
               }
-          }>התנתק</DropdownItem>
+          }>התנתקות</DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     }
