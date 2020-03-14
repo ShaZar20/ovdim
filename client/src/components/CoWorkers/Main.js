@@ -62,9 +62,9 @@ const Main = () => {
 
 
         if(x.role == "מרכז/ת שבט"){
-            console.log(x)
+            console.log("aaaaaa",x)
             axios
-            .post(BASE_URL + '/api/getusersby/',{hanaga:x.bigUnit})
+            .post(BASE_URL + '/api/getusersby/',{hanaga:x.bigunit})
             .then(res=>{
                 console.log(res)
                 let b = []
@@ -111,6 +111,30 @@ const Main = () => {
             case "דרג מתנדב": 
                 setType(6);
                 break;
+            case "גזבר/ית שבט":
+                setType(6);
+                break;
+            case "יור ועדה":
+                setType(6);
+                break;
+            case "יור תנועת הצופים":
+                setType(6);
+                break;
+            case "סגן ראש שבט":
+                setType(6);
+                break;
+            case "סגן/ית ראש הנהגה":
+                setType(6);
+                break;
+            case "עוזר/ת גזבר הנהגה":
+                setType(6);
+                break;
+            case "ראש הנהגה":
+                setType(6);
+                break;
+            case "ראש שבט":
+                setType(6);
+                break;
             case "מנהל/ת מרחב": 
                 setType(7);
                 break;
@@ -130,13 +154,12 @@ const Main = () => {
                 setType(9);
                 break;
             default :setType(0)
-
         }
     },[])
     
     if(!loader){
         switch(type) {
-            case 0: return (<div>damn</div>)
+            case 0: return (<div style={{textAlign:"center",marginTop:"3rem",fontSize:"16px"}}>היי , נראה שקרתה תקלה , אנא צור קשר עם רכז משאבי האנוש שלך לפתרון</div>)
             case 1: return <Type1 arr={arr} />
             case 2: return <Type2 arr={arr} /> 
             case 3: return <Type3 arr={arr} />

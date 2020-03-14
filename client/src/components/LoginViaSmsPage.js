@@ -76,17 +76,15 @@ const LoginViaSmsPage = () => {
                                         const to = sendi;
                                         const text = 'Your code: ' + pincode;
                                         axios
-                                        .post(BASE_URL+'/api/validation/',{email:email,pincode:pincode})
+                                        .post(BASE_URL+'/api/validation/',{email:email,number:sendi,pincode:pincode})
                                         .then(res=>{
                                             console.log(res)
+                                            setLoader(false)
                                         })
 
 
-                                        nexmo.message.sendSms(from, to, text);
-                                        let tttt = setLoader
-                                                setTimeout(()=>{
-                                                    tttt(false)
-                                                },2000)
+                                        // nexmo.message.sendSms(from, to, text);
+                                
                                         
                                         // axios
                                         // .post(BASE_URL+'/api/validation/',{number:sendi,pincode:pincode})

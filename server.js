@@ -64,6 +64,12 @@ router.post('/getusersby',(req,res)=>{
     res.send({data})
   })
 })
+router.post('/getusersby2',(req,res)=>{
+  console.log(req.body)
+  Users.find({unit:req.body.hanaga},(err,data)=>{
+    res.send({data})
+  })
+})
 
 router.post('/getusers',(req,res)=>{
   // console.log("boom ")

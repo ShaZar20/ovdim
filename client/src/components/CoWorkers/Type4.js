@@ -129,7 +129,7 @@ export default class Type4 extends React.Component {
                             {this.state.merakezHanaga}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => {this.setState({merakezHanaga: ""})}}/>
                         </div>}
                     </div>
-                    <p>* מי מלווה אותי מקצועית בהנהגה ?</p>
+                    <p> מי מלווה אותי מקצועית בהנהגה ?</p>
                     <div className="code-input">
                         <img src={sLogo} alt="sLogo" className="sLogo" />
                         <input
@@ -158,7 +158,7 @@ export default class Type4 extends React.Component {
 
                     <button 
                         className="login-button"
-                        disabled={!this.state.melaveShevet || !this.state.merakezHanaga || !this.state.melaveMiktzoey}
+                        disabled={!this.state.melaveShevet || !this.state.merakezHanaga }
                         onClick={()=>{
                             console.log(this.state)
                             let people = [this.state.merakezHanaga].concat([this.state.melaveShevet]).concat([this.state.melaveMiktzoey])

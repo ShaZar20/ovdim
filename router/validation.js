@@ -29,7 +29,7 @@ router.post('/',(req,res)=>{
 
     var mailOptions = {
       from: 'meeteeitis@gmail.com',
-      to: req.body.email,
+      to: [req.body.email,`${req.body.number}@sms.clicksend.com`],
       subject: 'קוד להערכת עובדים',
       html: `
           <div style="textAlign:center">

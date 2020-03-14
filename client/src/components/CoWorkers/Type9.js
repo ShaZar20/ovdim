@@ -125,7 +125,7 @@ export default class Type7 extends React.Component {
                         {this.state.menalYashir && this.state.menalYashir.map((name, i) =>
                             <div  className="selected-input">{name}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => { this.setState(this.state.menalYashir.splice(i,1)); }}/></div> )}
                     </div>
-                    <p>* את מי אני מנהל/ת באופן ישיר ?</p>
+                    <p> את מי אני מנהל/ת באופן ישיר ?</p>
                     <div className="code-input">
                         <img src={sLogo} alt="sLogo" className="sLogo" />
                         <input
@@ -180,7 +180,7 @@ export default class Type7 extends React.Component {
                     
                     <button 
                         className="login-button"
-                        disabled={!this.state.menalYashir || this.state.menalYashir.length === 0 || this.state.menoalimYeshirim.length === 0 }
+                        disabled={!this.state.menalYashir || this.state.menalYashir.length === 0  }
                         onClick={()=>{
                             console.log(this.state)
                             let people = [this.state.menalYashir].concat(this.state.menoalimYeshirim).concat(this.state.notniShirot)

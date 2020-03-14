@@ -143,7 +143,7 @@ export default class Type7 extends React.Component {
                             {this.state.menalYashir}<TiDelete style={{width:"3rem",height:"3rem"}} onClick={(e) => {this.setState({menalYashir: ""})}}/>
                         </div>}
                     </div>
-                    <p>* מי הדרג המקצועי אותו אני מלווה ?</p>
+                    <p> מי הדרג המקצועי אותו אני מלווה ?</p>
                     <div className="code-input">
                         <img src={sLogo} alt="sLogo" className="sLogo" />
                         <input
@@ -223,7 +223,7 @@ export default class Type7 extends React.Component {
                     
                     <button 
                         className="login-button"
-                        disabled={!this.state.menalYashir || this.state.deregMelove.length === 0 || this.state.menoalimYeshirim.length === 0 }
+                        disabled={!this.state.menalYashir || this.state.menoalimYeshirim.length === 0 }
                         onClick={()=>{
                             console.log(this.state)
                             let people = [this.state.menalYashir].concat(this.state.deregMelove).concat(this.state.menoalimYeshirim).concat(this.state.notniShirot)

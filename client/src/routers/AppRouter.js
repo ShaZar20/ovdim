@@ -10,6 +10,7 @@ import EnterPage from '../components/EnterPage';
 import Main from '../components/CoWorkers/Main';
 import Questions from '../components/Questions';
 import Final from '../components/Finalpage'
+import Stats from '../components/Stats'
 
  const AppRouter = () => (
      <BrowserRouter>
@@ -21,7 +22,8 @@ import Final from '../components/Finalpage'
                 <Route exact={true} path="/02" component={Main}  />
                 <Route exact={true} path="/main" component={Questions}  />
                 <Route exact={true} path="/home" component={EnterPage}  />
-                <Route exact={true} path="/done" component={Final}  />
+                <Route exact={true} path="/done" component={Final} />
+                <Route exact={true} path="/stats" component={Stats}  />
                 <Route component={NotFoundPage} />
             </Switch>
             

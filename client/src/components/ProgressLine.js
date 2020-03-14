@@ -36,6 +36,9 @@ export default ProgressLine;
 
 const Title = styled.div`
     font-size:16px;
+    @media(max-width:450px){
+        font-size:14px;
+    }
 
 `
 
@@ -48,10 +51,19 @@ const TheName = styled.div`
 `
 
 const Progcon = styled.div`
-    width:250px;
-    margin: 2rem 75% 0 0 ;
+    width: 250px;
+    z-index: 100;
+    margin: 0 70% 0 0;
+    position: absolute;
+    top: 90px;
     @media(max-width:450px){
-        margin:2rem auto;
+        /* margin:2rem auto; */
+        width: 190px;
+        z-index: 100;
+        margin:0;
+        left:5px;
+        position: absolute;
+        top: 80px;
     }
 `
 

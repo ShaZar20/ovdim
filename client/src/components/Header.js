@@ -17,15 +17,29 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {MdAccountCircle} from 'react-icons/md'
 
+const master =[
+    302600424,200043263,39806823,301724761,39211024,300329331,305065021,301023651,28073047,34233122,300168507,1112
+    // ,206324592
+]
+
 const Header = () => {
     const [name,setName] = useState('')
+    const [tell,setTell] = useState(false)
     useEffect(()=>{
         let x1 = JSON.parse(localStorage.getItem("userdata"))
         console.log(x1)
         if(x1!= null){
 
             setName(x1.name + " " + x1.lastname)
+            if(x1.role == "מרכז/ת הנהגה" || x1.role == "מנהל/ת מחלקה /יחידה" ){
+            setTell(true)
+            }
+            if(master.includes(x1.id)){
+                setTell(true)
+            }
         }
+
+
         console.log(window.location.href)
     },[])
 
@@ -45,7 +59,14 @@ const Header = () => {
           <MdAccountCircle/> {name}
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem style={{fontSize:"1.5rem",textAlign:"left"}} onClick={
+            {tell &&
+            <DropdownItem style={{fontSize:"1.5rem",textAlign:"center"}} onClick={
+              ()=>{
+                  window.location.href = "/stats"
+                }
+            }>דוחות</DropdownItem>
+            }
+          <DropdownItem style={{fontSize:"1.5rem",textAlign:"center"}} onClick={
               ()=>{
                   localStorage.removeItem("isuser")
                   localStorage.removeItem("userdata")

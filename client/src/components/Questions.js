@@ -16,7 +16,7 @@ const main = [{
         type:"scala"
         },
         {
-            main:"מהי הערכתך כלפי העובד/ת בנגע לעמידה ביעדים אישים ומקצועים? ",
+            main:"מהי הערכתך כלפי העובד/ת בנוגע לעמידה ביעדים אישיים ומקצועיים? ",
             type:"scala"
         },
         {
@@ -24,7 +24,7 @@ const main = [{
             type:"scala"
         },
         {
-            main:"מהי הערכתך כלפי העובד/ת בנוגע מתן פתרונות בתחום האחריות שלו/ה ?",
+            main:"מהי הערכתך כלפי העובד/ת בנוגע למתן פתרונות בתחום האחריות שלו/ה ?",
             type:"scala"
         },
         {
@@ -32,7 +32,7 @@ const main = [{
             type:"scala"
         },
         {
-            main:"מילוי הערכה מילולית על  ",
+            main:"סיכום התשובות באשכול מדדי מקצועיות ומילוי הערכה מילולית על:",
             type:"open"
         }
     ]},
@@ -40,26 +40,26 @@ const main = [{
     subject:"אשכול מדדי אישיות",
     question:[
         {
-            main:"מהי הערכתך כלפי העובד/ת בנוגע ליחסי אנוש שלו/ה? ",
+            main:"מהי הערכתך כלפי העובד/ת בנוגע ליחסי האנוש שלו/ה? ",
             type:"scala"
         },
         {
-            main:"מהי הערכתך כלפי העובד/ת בנוגע לשירותיות שלו/ה?  ",
+            main:"מהי הערכתך כלפי העובד/ת בנוגע למידת השירותיות שלו/ה?  ",
             type:"scala"
         },
         {
-            main:"מהי הערכתך כלפי העובד/ת בנוגע לאמינות שלו/ה?  ",
+            main:"מהי הערכתך כלפי העובד/ת בנוגע למידת האמינות שלו/ה?  ",
             type:"scala"
         },
         {
-            main:"מהי הערכתך כלפי העובד/ת בנוגע לדיסקרטיות שלו/ה? ",
+            main:"מהי הערכתך כלפי העובד/ת בנוגע למידת הדיסקרטיות שלו/ה? ",
             type:"scala"
         },
         {
             main:"מהי הערכתך כלפי העובד/ת בנוגע לקבלת ביקורת?",
             type:"scala"
         },        {
-            main:"מילוי הערכה מילולית על  ",
+            main:"סיכום התשובות באשכול מדדי מקצועיות ומילוי הערכה מילולית על:",
             type:"open"
         }        
     ]},
@@ -71,7 +71,7 @@ const main = [{
             type:"scala"
         },
         {
-            main:"מהי הערכתך כלפי העובד/ת בנוגע לדוגמא אישית שלו/ה?",
+            main:"מהי הערכתך כלפי העובד/ת בנוגע לדוגמא האישית שלו/ה?",
             type:"scala"
         },
         {
@@ -83,7 +83,7 @@ const main = [{
             type:"scala"
         },
         {
-            main:"מהי הערכתך כלפי העובד/ת בנוגע ללמידה עצמאית ויכולת הסקת מסקנות שלו/ה? ",
+            main:"מהי הערכתך כלפי העובד/ת בנוגע ליכולת הלמידה עצמאית והסקת המסקנות שלו/ה? ",
             type:"scala"
         },
         {
@@ -91,7 +91,7 @@ const main = [{
             type:"scala"
         },
         {
-            main:"מילוי הערכה מילולית על  ",
+            main:"סיכום התשובות באשכול מדדי מקצועיות ומילוי הערכה מילולית על:",
             type:"open"
         }
     ]},
@@ -251,6 +251,26 @@ const Scala = (arr,param,step,setq,setC,co) => {
                         }} 
                         />
                         6
+                        <span className="checkmark" />
+                    </label>
+                    <label className="input-box">
+                        <input type="checkbox" id="chB6" name="workerValue" checked={arr[i].content == -1 ? true : false} 
+                         onChange={(e) => {
+                             console.log("nbopo")
+                             let b = [...arr]
+                            if(b[i].content == ""){
+                                setC(co+1)
+                            }
+                            if(b[i].content == "-1"){
+                                b[i].content = ""
+                            }
+                            else{
+                                b[i].content = -1
+                            }
+                            setq(b)
+                        }} 
+                        />
+                        לא רלוונטי
                         <span className="checkmark" />
                     </label>
 
@@ -470,6 +490,7 @@ const Questions = () => {
                             <div className="container">
                                 <div className="sub-title">{quizi[step].subject}</div>
                                 <div className="title">{quizi[step].question}</div>
+                                <div className="sub-title">בחר\י את הציון שמשקף בצורה הטובה ביותר את תשובתך (1-הכי נמוך,6-הכי גבוה)</div>   
                                 <div style={{width: '80%', margin: '1rem 0'}} >
                                     {/* {props.nameArr.map(name, i => <Form2 name={name} onChange={this.onChange} index={i} />)} */}
                                     
@@ -751,7 +772,7 @@ const Questions = () => {
                               /> 
                              <div className="buttonToLeft-container">
                                 <button 
-                                // disabled = {dis}
+                                disabled = {quizi[step].subject == "אשכול אישי" && quizi[step].content == '' ? true:false}
                                 className="login-button"
                                 onClick={()=>{
                                     
