@@ -131,7 +131,7 @@ const Scala = (arr,param,step,setq,setC,co) => {
     for (let i=step;i<step+param;i++){
         show.push(
             <div className="boxTwo">
-                <p>{arr[i].about}</p>
+                <label>{arr[i].about}</label>
                 <div className="inputChB-container">
                     <label className="input-box">
                         <input type="checkbox" id="chB1" name="workerValue" checked={arr[i].content == 1 ? true : false} 
@@ -254,18 +254,18 @@ const Scala = (arr,param,step,setq,setC,co) => {
                         <span className="checkmark" />
                     </label>
                     <label className="input-box">
-                        <input type="checkbox" id="chB6" name="workerValue" checked={arr[i].content == -1 ? true : false} 
+                        <input type="checkbox" id="chB6" name="workerValue" checked={arr[i].content == "לא רלוונטי" ? true : false} 
                          onChange={(e) => {
                              console.log("nbopo")
                              let b = [...arr]
                             if(b[i].content == ""){
                                 setC(co+1)
                             }
-                            if(b[i].content == "-1"){
+                            if(b[i].content == "לא רלוונטי"){
                                 b[i].content = ""
                             }
                             else{
-                                b[i].content = -1
+                                b[i].content = "לא רלוונטי"
                             }
                             setq(b)
                         }} 
@@ -487,11 +487,11 @@ const Questions = () => {
                                 )
                                 
                             }
-                            <div className="container">
+                            <div className="container" style={{marginTop:"3rem"}}>
                                 <div className="sub-title">{quizi[step].subject}</div>
                                 <div className="title">{quizi[step].question}</div>
                                 <div className="sub-title">בחר\י את הציון שמשקף בצורה הטובה ביותר את תשובתך (1-הכי נמוך,6-הכי גבוה)</div>   
-                                <div style={{width: '80%', margin: '1rem 0'}} >
+                                <div className="boxthree" >
                                     {/* {props.nameArr.map(name, i => <Form2 name={name} onChange={this.onChange} index={i} />)} */}
                                     
                                     
@@ -553,10 +553,10 @@ const Questions = () => {
                                 )
                                 
                             }
-                            <div className="container">
+                            <div className="container" style={{marginTop:"3rem"}}>
                                 <div className="sub-title">{quizi[step].subject}</div>
                                 <div className="title">{quizi[step].question}</div>
-                                <div style={{width: '80%', margin: '1rem 0'}} >
+                                <div className="boxthree" >
                                     {/* {props.nameArr.map(name, i => <Form2 name={name} onChange={this.onChange} index={i} />)} */}
                                     
                                     
@@ -616,7 +616,7 @@ const Questions = () => {
                             )
                             
                         }
-                        <div className="container">
+                        <div className="container" style={{marginTop:"3rem"}}>
                             <div className="sub-title">{quizi[step].subject}</div>
                             <div className="title">{quizi[step].question}</div>
                             <div className="sub-container" style={{margin:"0",width:"100%",marginTop:"5rem"}}>

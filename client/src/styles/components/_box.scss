@@ -23,14 +23,34 @@
     align-items: center;
     font-size: x-small;
     padding: 1rem 0;
-    P{
+    label{
         font-size: medium;
     }
 }
 
-
+.boxthree{
+    width:80%;
+    margin:1rem 0;
+}
 @media (max-width:480px) {
     .box {
         width: 100%;
     }
+    .boxTwo {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        font-size: x-small;
+        padding: 1rem 0;
+        label{
+            font-size: 12px;
+        }
+    }
+
+    .boxthree{
+        width:100%;
+        margin:1rem 0;
+    }
+    
 }

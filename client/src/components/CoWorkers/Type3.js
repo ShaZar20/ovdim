@@ -81,7 +81,7 @@ export default class Type3 extends React.Component {
         return (
             <React.Fragment>
             <div className="">
-                <div className="container">  
+                <div className="container" style={{marginTop:"4rem"}}>  
                 <h2>פרטים אודות המוערכות/ים שלי</h2> 
                 <div className="sub-container">
                     <p>* מי מלווה אותי מקצועית ?</p>

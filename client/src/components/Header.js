@@ -62,9 +62,18 @@ const Header = () => {
             {tell &&
             <DropdownItem style={{fontSize:"1.5rem",textAlign:"center"}} onClick={
               ()=>{
-                  window.location.href = "/stats"
+                  if(window.location.href.includes("stats")){
+                    window.location.href = "/"
+                  } 
+                  else{
+                      window.location.href = "/stats"
+                  }
                 }
-            }>דוחות</DropdownItem>
+            }>
+                {
+                    window.location.href.includes("stats") ? "דף הבית" : "דוחות"
+                }
+                </DropdownItem>
             }
           <DropdownItem style={{fontSize:"1.5rem",textAlign:"center"}} onClick={
               ()=>{

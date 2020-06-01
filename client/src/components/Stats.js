@@ -165,7 +165,7 @@ const Stats = () => {
                 </Divi>
                 {
                     peop.length == 0 ? 
-                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                     :
                 
                 <Table>
@@ -182,7 +182,7 @@ const Stats = () => {
                                 <tr>
                                     <td>{x.name} {x.lastname}</td>
                                     <td>{x.role}</td>
-                                    <td>{status(x.step)}</td>
+                                    <td><StatusCircle status={x.step}/>{status(x.step)}</td>
                                     <td>-</td>
                                 </tr>
                             )
@@ -199,6 +199,16 @@ const Stats = () => {
 }
 
 export default Stats
+
+
+const StatusCircle = styled.div`
+    background:${props=> props.status == "0" ? "gray" : (props.status == "7" ? "green":"yellow")};
+    width:9px;
+    height:9px;
+    display:inline-block;
+    margin-left:10px;
+    border-radius:25px; 
+`
 
 const Statcon = styled.div`
 

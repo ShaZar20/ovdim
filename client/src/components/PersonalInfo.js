@@ -86,7 +86,7 @@ export default class PersonalInfo extends React.Component {
         return (
             <React.Fragment>
             <div className="container">
-                <div className="sub-container">
+                <div className="sub-container" style={{marginTop:"5rem"}}>
                     <h2 className="title-center">הפרטים האישיים שלי</h2>
                     <p>שם מלא *</p>
                     <input
