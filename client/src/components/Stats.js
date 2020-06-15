@@ -52,6 +52,9 @@ const mahlakot = [
     ,'תפעול ורכש'
     ,'חוות הצופים'
     ,'בטיחות'
+    ,'צופי ים'
+    ,'עדת הצופים'
+    ,'נוער וקהילה'
 ]
 
 const Stats = () => {
@@ -161,6 +164,9 @@ const Stats = () => {
                         <option value={'תפעול ורכש'}>תפעול ורכש</option>
                         <option value={'חוות הצופים'}>חוות הצופים</option>
                         <option value={'בטיחות'}>בטיחות</option>
+                        <option value={'נוער וקהילה'}>נוער וקהילה</option>
+                        <option value={'צופי ים'}>צופי ים</option>
+                        <option value={'עדת הצופים'}>עדת הצופים</option>
                     </select>
                 </Divi>
                 {
