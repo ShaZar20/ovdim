@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import {Redirect} from 'react-router-dom'
+import {Redirect,Link} from 'react-router-dom'
 import axios from 'axios'
 import {BASE_URL} from '../constants'
 import styled from 'styled-components'
@@ -75,6 +75,7 @@ const Stats = () => {
             .then(res=>{
                 console.log(res)
                 let arr = _.sortBy(res.data.data, [function(o) { return o.name; }]);
+                console.log(arr)
                 setPeop(arr)
             })
         }
@@ -85,6 +86,7 @@ const Stats = () => {
             .then(res=>{
                 console.log(res)
                 let arr = _.sortBy(res.data.data, [function(o) { return o.name; }]);
+                console.log(arr)
                 setPeop(arr)
             })
         }
@@ -189,7 +191,7 @@ const Stats = () => {
                                     <td>{x.name} {x.lastname}</td>
                                     <td>{x.role}</td>
                                     <td><StatusCircle status={x.step}/>{status(x.step)}</td>
-                                    <td>-</td>
+                                    <td>{x.step == 0 ? "-":(x.step == 7 ? <Link to={`/evaluate/${x._id}`}>מוכן לקיום שיחת הערכה</Link>:"ממתין לסיום התהליך")}</td>
                                 </tr>
                             )
                         })

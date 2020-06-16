@@ -11,6 +11,7 @@ import Main from '../components/CoWorkers/Main';
 import Questions from '../components/Questions';
 import Final from '../components/Finalpage'
 import Stats from '../components/Stats'
+import FinalForm from '../components/FinalForm'
 
  const AppRouter = () => (
      <BrowserRouter>
@@ -24,6 +25,7 @@ import Stats from '../components/Stats'
                 <Route exact={true} path="/home" component={EnterPage}  />
                 <Route exact={true} path="/done" component={Final} />
                 <Route exact={true} path="/stats" component={Stats}  />
+                <Route exact={true} path="/evaluate/:id" component={FinalForm}  />
                 <Route component={NotFoundPage} />
             </Switch>
             
