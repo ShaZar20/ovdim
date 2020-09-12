@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import {Redirect} from 'react-router-dom'
+import {Redirect,Link} from 'react-router-dom'
 import axios from 'axios'
 import {BASE_URL} from '../constants'
 import styled from 'styled-components'
@@ -52,6 +52,9 @@ const mahlakot = [
     ,'תפעול ורכש'
     ,'חוות הצופים'
     ,'בטיחות'
+    ,'צופי ים'
+    ,'עדת הצופים'
+    ,'נוער וקהילה'
 ]
 
 const Stats = () => {
@@ -72,6 +75,7 @@ const Stats = () => {
             .then(res=>{
                 console.log(res)
                 let arr = _.sortBy(res.data.data, [function(o) { return o.name; }]);
+                console.log(arr)
                 setPeop(arr)
             })
         }
@@ -82,6 +86,7 @@ const Stats = () => {
             .then(res=>{
                 console.log(res)
                 let arr = _.sortBy(res.data.data, [function(o) { return o.name; }]);
+                console.log(arr)
                 setPeop(arr)
             })
         }
@@ -161,6 +166,9 @@ const Stats = () => {
                         <option value={'תפעול ורכש'}>תפעול ורכש</option>
                         <option value={'חוות הצופים'}>חוות הצופים</option>
                         <option value={'בטיחות'}>בטיחות</option>
+                        <option value={'נוער וקהילה'}>נוער וקהילה</option>
+                        <option value={'צופי ים'}>צופי ים</option>
+                        <option value={'עדת הצופים'}>עדת הצופים</option>
                     </select>
                 </Divi>
                 {
@@ -183,7 +191,7 @@ const Stats = () => {
                                     <td>{x.name} {x.lastname}</td>
                                     <td>{x.role}</td>
                                     <td><StatusCircle status={x.step}/>{status(x.step)}</td>
-                                    <td>-</td>
+                                    <td>{x.step == 0 ? "-":(x.step == 7 ? <Link to={`/evaluate/${x._id}`}>מוכן לקיום שיחת הערכה</Link>:"ממתין לסיום התהליך")}</td>
                                 </tr>
                             )
                         })

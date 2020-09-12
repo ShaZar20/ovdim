@@ -129,6 +129,9 @@ const Main = () => {
             case "עוזר/ת גזבר הנהגה":
                 setType(6);
                 break;
+            case "גזבר/ית הנהגה":
+                setType(6);
+                break;
             case "ראש הנהגה":
                 setType(6);
                 break;

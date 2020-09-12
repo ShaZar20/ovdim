@@ -3,5 +3,6 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.deploySubpath": ""
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/84e346aa-3581-4300-8cca-5595c8ef095c/resourceGroups/robin/providers/Microsoft.Web/sites/ovdimproject"
 }

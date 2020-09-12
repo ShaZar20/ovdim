@@ -57,6 +57,27 @@ router.post('/setstatus',(req,res)=>{
   })
 })
 
+// -------- לטופס הערכת עובדים -----------------
+router.post('/getuser',(req,res)=>{
+  Users.findById({_id:req.body._id},(err,doc)=>{
+    if(err){
+      console.log(err)
+    }
+    res.send(doc)
+  })
+})
+
+router.post('/getanswersforuser',(req,res)=>{
+  Answers.find({about:req.body.name},(err,doc)=>{
+    if(err){
+      console.log(err)
+    }
+    res.send(doc)
+  })
+})
+
+// ------------------- סיום --------------------------
+
 router.post('/getusersby',(req,res)=>{
   console.log(req.body)
   console.log("un")
