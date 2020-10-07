@@ -73,9 +73,7 @@ const Stats = () => {
             axios
             .post(BASE_URL+'/api/getusersby2',{hanaga:unit})
             .then(res=>{
-                console.log(res)
                 let arr = _.sortBy(res.data.data, [function(o) { return o.name; }]);
-                console.log(arr)
                 setPeop(arr)
             })
         }
@@ -84,20 +82,14 @@ const Stats = () => {
             axios
             .post(BASE_URL+'/api/getusersby',{hanaga:unit})
             .then(res=>{
-                console.log(res)
                 let arr = _.sortBy(res.data.data, [function(o) { return o.name; }]);
-                console.log(arr)
                 setPeop(arr)
             })
         }
-
-       
     },[unit])
 
     useEffect(()=>{
-        
         let x1 = JSON.parse(localStorage.getItem("userdata"))
-        console.log(x1)
         if(master.includes(x1.id)){
             setType("master")
             setSelect(false)
@@ -118,7 +110,6 @@ const Stats = () => {
                 setLoader(false)
             }
         }
-
     },[])
 
     return (
